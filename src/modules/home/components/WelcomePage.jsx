@@ -33,7 +33,7 @@ export const WelcomePage = () => {
             </Box>
             <Box className="welcome-image-container" sx={{ backgroundImage: `url(${growiseStartLogo})`, }}>
                 <Typography variant="h2" component="div">Welcome to</Typography>
-                <button style={{ color: theme.palette.secondary.main }} className='welcome-button'>Let get started</button>
+                <button style={{ color: theme.palette.secondary[200] }} className='welcome-button'>Let get started</button>
             </Box>
         </Box>
     )
