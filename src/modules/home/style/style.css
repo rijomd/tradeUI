@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&display=swap');
+
+.lottie-container {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.welcome-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0px;
+  flex-direction: column;
+  height: 140px;
+  max-width: 100%;
+  max-height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.welcome-container {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.lottie-content {
+  width: 380px;
+  height: 300px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+.welcome-button {
+  background: transparent;
+  padding: 8px 24px;
+  box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.09);
+  border: 1px #FFFFFF;
+  border-radius: 8px;
+}
+
+.about-us-home .header {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
