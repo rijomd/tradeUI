@@ -73,7 +73,10 @@ export const lightThemeColors = {
     textTitle: "#000000",
     textPrimary: "#5c1055",
     textSecondary: "#C300AB",
-    textBody: "black"
+    textBody: "black",
+    textLight: "#fff",
+    darkTextPrimary: "#000000",
+    darkTextSecondary: "#fff"
 };
 
 export const darkThemeColors = {
@@ -99,7 +102,9 @@ export const darkThemeColors = {
     textPrimary: "#5c1055",
     textSecondary: "#C300AB",
     textBody: "#fff",
-
+    textLight: "#000000",
+    darkTextPrimary: "#fff",
+    darkTextSecondary: "#000000",
     // grey
     grey900: "#f8fafc",
     grey700: "#eef2f6",

@@ -46,9 +46,30 @@
   border-radius: 8px;
 }
 
+.about-us-home {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-us-home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 250px;
+  background: radial-gradient(#c300ab9c 0%, rgb(0 0 0 / 0%) 100%);
+  z-index: 1;
+}
+
+.about-us-home .container {
+  min-height: 400px;
+  margin-top: 64px;
+  padding: 24px;
+  border-radius: 16px;
+}
+
 .about-us-home .header {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
-  margin: 0;
-  padding: 0;
 }
