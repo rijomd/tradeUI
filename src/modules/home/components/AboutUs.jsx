@@ -7,7 +7,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 
 const ContentBox = styled('div')(({ theme, background, flex }) => ({
-    padding: "12px",
+    padding: "24px",
     background: background,
     border: `1px solid ${theme.palette.secondary[200]}`,
     borderRadius: "8px",
@@ -22,10 +22,10 @@ export const AboutUs = () => {
         <Box className='about-us-home'>
             <Container pb={2} className='container' >
                 {/* content must be change */}
-                <Grid container spacing={2} pb={3}>
+                <Grid container spacing={4} pb={3}>
                     <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                         <Typography variant='h1' pb={2} className='header' color={theme.palette.grey[50]}> to know more...</Typography>
-                        <Box pb={2} sx={{ display: "flex" }}>
+                        <Box sx={{ display: "flex" }}>
                             <Typography mr={1} variant='h2'> ABOUT </Typography>
                             <Typography variant='h2' color={theme.palette.secondary[200]}> GROWWISE</Typography>
                         </Box>

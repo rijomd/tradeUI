@@ -6,6 +6,9 @@ import App from './App.jsx';
 import { store } from 'store/Store.js';
 
 import './index.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

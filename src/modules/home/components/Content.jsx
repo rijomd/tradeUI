@@ -3,7 +3,6 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 import aboutUsimage from 'assets/images/aboutUsimage.jpg';
-import success from 'assets/images/success.png';
 
 export const Content = () => {
     const theme = useTheme();

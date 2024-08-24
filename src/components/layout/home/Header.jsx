@@ -31,6 +31,7 @@ export const Header = ({ toggleDrawer, isMobile }) => {
             position="fixed"
             sx={{
                 backgroundColor: isMobile ? 'none' : 'transparent',
+                backdropFilter: "blur(10px)",
                 transition: '0.3s',
                 position: "fixed",
                 boxShadow: scrolled ? `0px 0px -1px 0px ${theme.palette.secondary.light}` : 'none',

@@ -46,6 +46,7 @@
   border-radius: 8px;
 }
 
+/* about us  */
 .about-us-home {
   position: relative;
   overflow: hidden;
@@ -75,9 +76,9 @@
 .about-us-home .header {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
-  font-size: 3.5rem;
 }
 
+/* content section */
 .content-about-image {
   object-fit: cover;
   height: 300px;
@@ -111,8 +112,6 @@
 
 .content-body {
   position: relative;
-  /* width: 100%; */
-  /* height: 100%; */
   overflow: hidden;
 }
 
@@ -127,8 +126,122 @@
   z-index: 1;
 }
 
+/* review section */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "";
+}
+
+.review-image {
+  display: block;
+  width: 100%;
+  height: 88px;
+  object-fit: cover;
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+
+
+/* changing width od swiper need to change in mobile   npm module*/
+.swiper-slide {
+  margin: 2px 4px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #FFFFFF;
+}
+
+.swiper-pagination-bullet {
+  background: #f2c8ed;
+}
+
+.swiper-pagination {
+  position: relative;
+  margin-top: 12px;
+}
+
+/* changing width od swiper need to change in mobile  npm module  */
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.swiper-button-prev {
+  border-width: 20px 25px 20px 0;
+  border-color: transparent #fff transparent transparent;
+  left: 10px;
+}
+
+.swiper-button-next {
+  border-width: 20px 0 20px 25px;
+  border-color: transparent transparent transparent #fff;
+  right: 10px;
+}
+
+.custom-arrow.prev,
+.custom-arrow.next {
+  display: none;
+}
+
+
+.review-rating {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-rating-date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-container {
+  padding: 12px;
+  border-radius: 12px;
+  background: linear-gradient(48deg, #d94fc896 5%, #46003d96 14%, #8309747d 76%, #5e0052a1 39%, #c300ab5e 5%)
+}
+
+.review-container:hover {
+  background: #fff;
+  color: #0d0d0d;
+  transform: scale(1.05);
+  transition-delay: 0.3s;
+}
+
+.review-container:hover p,
+.review-container:hover h6,
+.review-container:hover h5 {
+  color: #0d0d0d;
+}
+
+.review-container:hover span {
+  color: #C300AB;
+}
+
 @media (max-width: 600px) {
   .content-about-image {
     object-fit: cover;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .swiper-slide {
+    margin: 8px 16px;
+  }
+
+  .about-us-home .header {
+    font-size: 3.5rem;
   }
 }
