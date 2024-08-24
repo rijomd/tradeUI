@@ -18,7 +18,8 @@ export const Content = () => {
                     <h1 class="content-head-text">
                         MEET OUR  <span style={{ color: theme.palette.secondary[200] }}>CREATIVE TEAM</span>
                     </h1>
-                    <Box>
+                    <Box className="content-body">
+                        <Box className="background-blur"></Box>
                         <Typography variant='body' color={theme.palette.text.primary}>
                             is simply dummy text of the printing and typesetting industry.
                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
