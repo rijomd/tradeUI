@@ -40,10 +40,22 @@
 
 .welcome-button {
   background: transparent;
-  padding: 8px 24px;
+  padding: 16px 24px;
   box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.09);
   border: 1px #FFFFFF;
   border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-button::before {
+  content: '';
+  position: absolute;
+  border: 2px solid #c300ab9c;
+  box-sizing: border-box;
+  z-index: 1;
+  opacity: 0;
+  animation: border-animation 2s linear infinite;
 }
 
 /* about us  */
@@ -225,6 +237,34 @@
   color: #C300AB;
 }
 
+/* footer section */
+.footer-container {
+  border-radius: 12px;
+  border: 1px solid #C300AB;
+}
+
+.footer-divider {
+  height: 1px;
+  border: none;
+  background: linear-gradient(to right, #33032D 35%, #C300AB 60%, #33032D 35%);
+}
+
+.footer-icon-container {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  cursor: pointer;
+  transition: background-image 0.3s ease-in-out;
+  justify-content: center;
+}
+
+.footer-icon-container img {
+  padding-right: 24px;
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 600px) {
   .content-about-image {
     object-fit: cover;
@@ -234,14 +274,53 @@
   .swiper-button-next {
     display: none;
   }
+
+  .content-head-text {
+    text-align: start !important;
+  }
 }
 
 @media (min-width: 600px) {
-  .swiper-slide {
-    margin: 8px 16px;
-  }
-
   .about-us-home .header {
     font-size: 3.5rem;
+  }
+}
+
+@keyframes border-animation {
+  0% {
+    width: 0;
+    height: 2px;
+    opacity: 1;
+    top: 0;
+    left: 0;
+  }
+
+  25% {
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+  }
+
+  50% {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  75% {
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 100%;
+  }
+
+  100% {
+    width: 0;
+    height: 2px;
+    top: 100%;
+    left: 100%;
+    opacity: 0;
   }
 }
