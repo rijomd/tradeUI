@@ -52,7 +52,7 @@ export const ReviewPage = () => {
                 WHAT OUR <br /> <span style={{ color: theme.palette.secondary[200] }}>CUSTOMERS TEAM</span> SAYS ABOUT US.
             </h1>
 
-            <Box sx={{ height: '400px' }}>
+            <Box>
                 <Swiper
                     slidesPerView={isMobile ? 1 : 3}
                     centeredSlides={false}
@@ -81,17 +81,21 @@ export const ReviewPage = () => {
                                         <RatingSection value={item.rating} />
                                     </Box>
                                 </Grid>
-                                <Grid item md={12} xs={12} lg={12} xl={12}>
-                                    <Typography variant='body1'>
-                                        {item.review?.length > 500 ? (
-                                            <>
-                                                {item.review.substring(0, 500)}
-                                                {seeMore}
-                                            </>
-                                        ) : (item.review)}
-                                    </Typography>
+                                <Grid item md={12} xs={12} lg={12} xl={12} >
+                                    <Grid container spacing={2}>
+                                        <Grid item md={12} xs={12} lg={12} xl={12}>
+                                            <Typography variant='body1'>
+                                                {item.review?.length > 350 ? (
+                                                    <>
+                                                        {item.review.substring(0, 500)}
+                                                        {seeMore}
+                                                    </>
+                                                ) : (item.review)}
+                                            </Typography>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
-                                <Grid item md={12} xs={12} lg={12} xl={12}>
+                                <Grid item md={12} xs={12} lg={12} xl={12} pb={1}>
                                     <Box className="review-rating-date">
                                         <Typography sx={{ color: theme.palette.grey[500] }} variant='subtitle2'>{item.createdDate}</Typography>
                                         <Typography sx={{ color: theme.palette.grey[500] }} variant='subtitle2'>{item.createdTime}</Typography>

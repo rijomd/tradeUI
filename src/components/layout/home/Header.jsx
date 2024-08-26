@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Container, IconButton, Toolbar, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -39,25 +39,27 @@ export const Header = ({ toggleDrawer, isMobile }) => {
             }}
         >
             <Toolbar>
-                {isMobile && <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    onClick={toggleDrawer}
-                >
-                    <MenuIcon />
-                </IconButton>}
-                <Box component="span" sx={{ flexGrow: 1 }}>
-                    <LogoSection />
-                </Box>
-                {!isMobile && <Box sx={{ display: "flex", cursor: "pointer" }}>
-                    <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
-                        mr={2} variant="subtitle1" component="div">
-                        About Us
-                    </Typography>
-                    <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
-                        mr={2} variant="subtitle1" component="div">Contact Us</Typography>
-                </Box>}
+                <Container sx={{ display: 'flex' }}>
+                    {isMobile && <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={toggleDrawer}
+                    >
+                        <MenuIcon />
+                    </IconButton>}
+                    <Box component="span" sx={{ flexGrow: 1 }}>
+                        <LogoSection />
+                    </Box>
+                    {!isMobile && <Box sx={{ display: "flex", cursor: "pointer" }}>
+                        <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
+                            mr={2} variant="subtitle1" component="div">
+                            About Us
+                        </Typography>
+                        <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
+                            mr={2} variant="subtitle1" component="div">Contact Us</Typography>
+                    </Box>}
+                </Container>
             </Toolbar>
         </AppBar>
     )

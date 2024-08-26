@@ -217,7 +217,8 @@
 .review-container {
   padding: 12px;
   border-radius: 30px;
-  background: linear-gradient(48deg, #d94fc896 5%, #46003d96 14%, #8309747d 76%, #5e0052a1 39%, #c300ab5e 5%)
+  background: linear-gradient(48deg, #d94fc896 5%, #46003d96 14%, #8309747d 76%, #5e0052a1 39%, #c300ab5e 5%);
+  height: auto;
 }
 
 .review-container:hover {
@@ -275,7 +276,7 @@
 
 .contact-container {
   width: 100%;
-  height: 600px;
+  height: 565px;
   position: relative;
   display: flex;
 }
@@ -316,6 +317,59 @@
   z-index: 3;
 }
 
+/* news section */
+.newsSection-scroll-container {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.newsSection-scroll-content {
+  display: flex;
+  animation: scroll-left 5s linear infinite;
+}
+
+.newsSection-scroll-item {
+  flex: 0 0 auto;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.news-letter-container {
+  height: auto;
+  border-radius: 30px;
+  background: transparent;
+}
+
+.news-letter-container img {
+  height: 280px;
+  object-fit: cover;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  width: 100%;
+}
+
+.news-letter-container h3 {
+  padding: 4px 0px;
+}
+
+.news-letter-container p {
+  padding: 8px 0px;
+}
+
+.news-letter-content {
+  padding-bottom: 10px;
+}
+
+.news-letter-box {
+  background: linear-gradient(to bottom, transparent 160px, rgb(195 0 171 / 13%) 100%, rgba(195, 0, 171, 0) 0%);
+}
+
+
+
+/* for sm */
 @media (max-width: 600px) {
   .content-about-image {
     object-fit: cover;
@@ -344,13 +398,29 @@
   .contact-container .div2 {
     display: none;
   }
+
+  .about-us-home .container {
+    margin-top: 0px;
+  }
 }
 
+
+
+/* for md */
 @media (min-width: 600px) {
   .about-us-home .header {
     font-size: 3.5rem;
   }
+
+  .news-letter-content {
+    min-height: 180px;
+  }
 }
+
+
+
+
+
 
 @keyframes border-animation {
   0% {
@@ -388,5 +458,15 @@
     top: 100%;
     left: 100%;
     opacity: 0;
+  }
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-20%);
   }
 }

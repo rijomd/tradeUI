@@ -7,16 +7,18 @@ import { Content } from '../components/Content';
 import { ReviewPage } from '../components/ReviewPage';
 import { Footer } from '../components/Footer';
 import { ContactUs } from '../components/ContactUs';
+import { NewsSection } from '../components/NewsSection';
 
 import "../style/style.css";
 
 const HomePage = () => {
-    const sx = { marginTop: { sm: '32px', md: '64px' } };
+    const sx = { marginTop: { xs: '48px', sm: '48px', md: '64px' } };
 
     return (
         <>
-            <Box>
-                <WelcomePage />
+            <WelcomePage />
+            <Box sx={sx}>
+                <NewsSection />
             </Box>
             <AboutUs />
             <Box sx={sx}>
@@ -25,8 +27,13 @@ const HomePage = () => {
             <Box sx={sx}>
                 <ContactUs />
             </Box>
-            <ReviewPage />
-            <Footer />
+            <Box sx={sx}>
+                <ReviewPage />
+            </Box>
+            <Box sx={sx}>
+                <Footer />
+            </Box>
+
             <div style={{ height: "15vh" }}></div>
         </>
     )

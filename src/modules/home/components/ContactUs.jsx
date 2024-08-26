@@ -14,7 +14,7 @@ export const ContactUs = ({ }) => {
         <Container>
             <Grid container spacing={2}>
                 <Grid item md={12} lg={12} xs={12}>
-                    <Typography class="content-head-text" style={{ marginBottom: 0 }}>
+                    <Typography className="content-head-text" style={{ marginBottom: 0 }}>
                         CONTACT  <span style={{ color: theme.palette.secondary[200] }}> US</span>
                     </Typography>
                 </Grid>
