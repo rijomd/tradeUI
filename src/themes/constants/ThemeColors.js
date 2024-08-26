@@ -11,7 +11,7 @@ export const lightThemeColors = {
 
     // secondary
     secondaryLight: "#ede7f6",
-    secondaryMain: "#5c1055",
+    secondaryMain: "#C300AB",
     secondaryDark: "#5c1055",
     secondary200: "#C300AB",
     secondary800: "#4527a0",
@@ -92,7 +92,7 @@ export const darkThemeColors = {
 
     // secondary
     secondaryLight: "#eef2f6",
-    secondaryMain: "#5c1055",
+    secondaryMain: "#C300AB",
     secondaryDark: "#5c1055",
     secondary200: "#C300AB",
     secondary800: "#4527a0",

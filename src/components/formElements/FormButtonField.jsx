@@ -1,18 +1,23 @@
-import { Tooltip } from "@mui/material";
+import React from "react";
+import { Button, Tooltip } from "@mui/material";
 
 export const FormButtonField = (props) => {
-  const { fullWidth = true, children, onClick = () => { }, disabled, color, label, variant, ...others } = props;
+  const { fullWidth = true, children, onClick = () => { }, disabled, color = 'secondary', label, variant = "contained", size = "small", ...others } = props;
 
   return (
     <Tooltip title={label}>
-      <button
-        size="small"
+      <Button
+        variant={'contained'}
+        size={size}
+        color={color}
+        endIcon={disabled && <CircularProgress />}
+        fullWidth={fullWidth}
         onClick={onClick}
         disabled={disabled}
         {...others}
       >
         {children}
-      </button>
+      </Button>
     </Tooltip>
   );
 };

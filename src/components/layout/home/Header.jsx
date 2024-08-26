@@ -5,10 +5,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import { LogoSection } from '../LogoSection';
 
-
-
 export const Header = ({ toggleDrawer, isMobile }) => {
     const [scrolled, setScrolled] = useState(false);
+    const [color, setColor] = useState({ h1: "#fff", h2: "#fff" });
+
     const theme = useTheme();
 
     const handleScroll = () => {
@@ -51,8 +51,12 @@ export const Header = ({ toggleDrawer, isMobile }) => {
                     <LogoSection />
                 </Box>
                 {!isMobile && <Box sx={{ display: "flex", cursor: "pointer" }}>
-                    <Typography mr={2} variant="h4" component="div">About Us</Typography>
-                    <Typography mr={2} variant="h4" component="div">Contact Us</Typography>
+                    <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
+                        mr={2} variant="subtitle1" component="div">
+                        About Us
+                    </Typography>
+                    <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
+                        mr={2} variant="subtitle1" component="div">Contact Us</Typography>
                 </Box>}
             </Toolbar>
         </AppBar>

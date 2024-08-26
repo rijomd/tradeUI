@@ -10,7 +10,7 @@ const ContentBox = styled('div')(({ theme, background, flex }) => ({
     padding: "24px",
     background: background,
     border: `1px solid ${theme.palette.secondary[200]}`,
-    borderRadius: "8px",
+    borderRadius: "12px",
     height: '100%',
     flex: flex,
 }));

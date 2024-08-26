@@ -216,7 +216,7 @@
 
 .review-container {
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 30px;
   background: linear-gradient(48deg, #d94fc896 5%, #46003d96 14%, #8309747d 76%, #5e0052a1 39%, #c300ab5e 5%)
 }
 
@@ -239,7 +239,7 @@
 
 /* footer section */
 .footer-container {
-  border-radius: 12px;
+  border-radius: 57px;
   border: 1px solid #C300AB;
 }
 
@@ -265,6 +265,57 @@
   height: 100%;
 }
 
+/* contact us section */
+
+.contact-form img {
+  object-fit: contain;
+  height: 330px;
+  width: 100%;
+}
+
+.contact-container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  display: flex;
+}
+
+.contact-container .div1 {
+  width: 70%;
+  height: 482px;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  transform: translateY(5%);
+  align-items: center;
+  display: flex;
+}
+
+.contact-container .div2 {
+  width: 40%;
+  height: 544px;
+  position: absolute;
+  top: 0;
+  left: 60%;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.contact-container .div2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+
 @media (max-width: 600px) {
   .content-about-image {
     object-fit: cover;
@@ -277,6 +328,21 @@
 
   .content-head-text {
     text-align: start !important;
+  }
+
+  .contact-container {
+    height: max-content;
+  }
+
+  .contact-container .div1 {
+    width: 100%;
+    position: relative;
+    height: max-content;
+    backdrop-filter: none;
+  }
+
+  .contact-container .div2 {
+    display: none;
   }
 }
 
