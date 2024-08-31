@@ -39,15 +39,7 @@ export const Header = ({ toggleDrawer, isMobile }) => {
             }}
         >
             <Toolbar>
-                <Container sx={{ display: 'flex' }}>
-                    {isMobile && <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        onClick={toggleDrawer}
-                    >
-                        <MenuIcon />
-                    </IconButton>}
+                <Container sx={{ display: 'flex', alignItems: 'center' }}>
                     <Box component="span" sx={{ flexGrow: 1 }}>
                         <LogoSection />
                     </Box>
@@ -59,6 +51,14 @@ export const Header = ({ toggleDrawer, isMobile }) => {
                         <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
                             mr={2} variant="subtitle1" component="div">Contact Us</Typography>
                     </Box>}
+                    {isMobile && <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={toggleDrawer}
+                    >
+                        <MenuIcon />
+                    </IconButton>}
                 </Container>
             </Toolbar>
         </AppBar>

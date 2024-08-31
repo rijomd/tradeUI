@@ -25,8 +25,8 @@ export const HomeLayout = () => {
             <Header isMobile={isMobile} toggleDrawer={() => setDrawerOpen(!drawerOpen)} />
             <SideBar open={drawerOpen} toggleDrawer={() => setDrawerOpen(false)} />
             <Container className='home-container' maxWidth={false} sx={{
-                paddingTop: `calc(${HeaderHeight + 3}px)`, width: '100%',
-                maxWidth: '100%', padding: 0
+                width: '100%',
+                maxWidth: '100%'
             }}>
                 <Outlet />
             </Container>

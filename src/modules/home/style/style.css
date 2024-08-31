@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&display=swap');
 
 .lottie-container {
-  height: 400px;
+  height: 430px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,12 +16,13 @@
   flex-wrap: wrap;
   gap: 0px;
   flex-direction: column;
-  height: 140px;
+  height: 160px;
   max-width: 100%;
   max-height: 100%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  margin-top: 48px;
 }
 
 .welcome-container {
@@ -32,9 +33,9 @@
 
 .lottie-content {
   width: 380px;
-  height: 300px;
   max-width: 100%;
   max-height: 100%;
+  padding-top: 95px;
 }
 
 
@@ -88,6 +89,7 @@
 .about-us-home .header {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
+  opacity: 0.1;
 }
 
 /* content section */
@@ -157,7 +159,7 @@
 
 /* changing width od swiper need to change in mobile   npm module*/
 .swiper-slide {
-  margin: 2px 4px;
+  margin: 2px 12px;
 }
 
 .swiper-pagination-bullet-active {
@@ -215,7 +217,7 @@
 }
 
 .review-container {
-  padding: 12px;
+  padding: 24px;
   border-radius: 30px;
   background: linear-gradient(48deg, #d94fc896 5%, #46003d96 14%, #8309747d 76%, #5e0052a1 39%, #c300ab5e 5%);
   height: auto;
@@ -378,10 +380,6 @@
   .swiper-button-prev,
   .swiper-button-next {
     display: none;
-  }
-
-  .content-head-text {
-    text-align: start !important;
   }
 
   .contact-container {

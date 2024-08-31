@@ -22,10 +22,10 @@ export const ContactUs = ({ }) => {
                     <Box className="contact-container">
                         <Box className="div1">
                             <Grid container spacing={2} className="contact-form" >
-                                <Grid item md={2} lg={2} xs={2}>
+                                <Grid item md={2} lg={2} xs={2} sx={{ display: { md: "block", xs: "none" } }}>
                                     <img src={logo} />
                                 </Grid>
-                                <Grid item md={7} lg={7} xs={10}>
+                                <Grid item md={7} lg={7} xs={12}>
                                     <ContactUsForm />
                                 </Grid>
                             </Grid>

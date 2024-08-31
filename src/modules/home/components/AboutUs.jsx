@@ -24,7 +24,7 @@ export const AboutUs = () => {
                 {/* content must be change */}
                 <Grid container spacing={4} pb={3}>
                     <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                        <Typography variant='h1' pb={2} className='header' color={theme.palette.grey[50]}> to know more...</Typography>
+                        <Typography variant='h1' pb={2} className='header' color={theme.palette.text.primary}> to know more...</Typography>
                         <Box sx={{ display: "flex" }}>
                             <Typography mr={1} variant='h2'> ABOUT </Typography>
                             <Typography variant='h2' color={theme.palette.secondary[200]}> GROWWISE</Typography>

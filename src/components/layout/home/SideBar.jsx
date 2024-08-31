@@ -9,7 +9,7 @@ export const SideBar = ({ toggleDrawer = () => { }, open = false }) => {
     const theme = useTheme();
 
     return (
-        <Drawer anchor="left" open={open} onClose={toggleDrawer}
+        <Drawer anchor="right" open={open} onClose={toggleDrawer}
             PaperProps={{
                 sx: {
                     boxShadow: `inset 4px 2px 22px 20px ${theme.palette.grey[50]}`,
@@ -22,11 +22,8 @@ export const SideBar = ({ toggleDrawer = () => { }, open = false }) => {
                 onKeyDown={toggleDrawer}
                 sx={{ width: DrawerWidth }}
             >
-                <List>
-                    <ListItem sx={{ minHeight: HeaderHeight }}>
-                        <LogoSection />
-                    </ListItem>
-                </List>
+                <ListItem sx={{ minHeight: HeaderHeight }}>
+                </ListItem>
                 <Divider sx={{ paddingTop: "8px" }} />
                 <List>
                     <ListItem >

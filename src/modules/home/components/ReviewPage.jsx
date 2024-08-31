@@ -54,7 +54,7 @@ export const ReviewPage = () => {
 
             <Box>
                 <Swiper
-                    slidesPerView={isMobile ? 1 : 3}
+                    slidesPerView={isMobile ? 1 : 4}
                     centeredSlides={false}
                     ref={sliderRef}
                     modules={[Pagination, Navigation]}
@@ -96,10 +96,10 @@ export const ReviewPage = () => {
                                     </Grid>
                                 </Grid>
                                 <Grid item md={12} xs={12} lg={12} xl={12} pb={1}>
-                                    <Box className="review-rating-date">
+                                    {/* <Box className="review-rating-date">
                                         <Typography sx={{ color: theme.palette.grey[500] }} variant='subtitle2'>{item.createdDate}</Typography>
                                         <Typography sx={{ color: theme.palette.grey[500] }} variant='subtitle2'>{item.createdTime}</Typography>
-                                    </Box>
+                                    </Box> */}
                                 </Grid>
                             </Grid>
                         </SwiperSlide>
