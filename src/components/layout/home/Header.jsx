@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { AppBar, Box, Container, IconButton, Toolbar, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -7,7 +9,7 @@ import { LogoSection } from '../LogoSection';
 
 export const Header = ({ toggleDrawer, isMobile }) => {
     const [scrolled, setScrolled] = useState(false);
-    const [color, setColor] = useState({ h1: "#fff", h2: "#fff" });
+    const navigate = useNavigate();
 
     const theme = useTheme();
 
@@ -44,12 +46,29 @@ export const Header = ({ toggleDrawer, isMobile }) => {
                         <LogoSection />
                     </Box>
                     {!isMobile && <Box sx={{ display: "flex", cursor: "pointer" }}>
-                        <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
-                            mr={2} variant="subtitle1" component="div">
+                        <Typography
+                            id="let-get-started-id"
+                            sx={{ ':hover': { color: theme.palette.secondary[200] }, display: 'none' }}
+                            mr={2} variant="subtitle1"
+                            component="div"
+                            onClick={() => { navigate("/login"); }}
+                        >
+                            Let Get Started
+                        </Typography>
+                        <Typography
+                            sx={{ ':hover': { color: theme.palette.secondary[200] } }}
+                            mr={2} variant="subtitle1"
+                            component="div"
+                        >
                             About Us
                         </Typography>
-                        <Typography sx={{ ':hover': { color: theme.palette.secondary[200] } }}
-                            mr={2} variant="subtitle1" component="div">Contact Us</Typography>
+                        <Typography
+                            sx={{ ':hover': { color: theme.palette.secondary[200] } }}
+                            mr={2} variant="subtitle1"
+                            component="div"
+                        >
+                            Contact Us
+                        </Typography>
                     </Box>}
                     {isMobile && <IconButton
                         edge="start"

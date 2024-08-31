@@ -65,7 +65,7 @@ export const Footer = () => {
             <Box p={2} className='footer-container'>
                 <Grid container spacing={2} >
                     <Grid item md={12} xs={12}>
-                        <h1 class="content-head-text" style={{ textAlign: "center" }}>
+                        <h1 className="content-head-text" style={{ textAlign: "center" }}>
                             STAY CONNECT  <span style={{ color: theme.palette.secondary[200] }}>WITH US</span>
                         </h1>
                     </Grid>

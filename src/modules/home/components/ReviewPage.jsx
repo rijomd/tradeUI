@@ -48,7 +48,7 @@ export const ReviewPage = () => {
 
     return (
         <Container>
-            <h1 class="content-head-text">
+            <h1 className="content-head-text">
                 WHAT OUR <br /> <span style={{ color: theme.palette.secondary[200] }}>CUSTOMERS TEAM</span> SAYS ABOUT US.
             </h1>
 

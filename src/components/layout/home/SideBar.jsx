@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
+
 import { Box, Divider, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import { LogoSection } from '../LogoSection';
 import { DrawerWidth, HeaderHeight } from 'themes/constants/ThemeConstants';
 
 export const SideBar = ({ toggleDrawer = () => { }, open = false }) => {
     const theme = useTheme();
+    const navigate = useNavigate();
 
     return (
         <Drawer anchor="right" open={open} onClose={toggleDrawer}
@@ -31,6 +33,9 @@ export const SideBar = ({ toggleDrawer = () => { }, open = false }) => {
                     </ListItem>
                     <ListItem >
                         <ListItemText primary="Contact Us" />
+                    </ListItem>
+                    <ListItem >
+                        <ListItemText primary="Login" onClick={() => { navigate("/login"); }} />
                     </ListItem>
                 </List>
             </Box>

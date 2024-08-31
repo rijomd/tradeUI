@@ -14,7 +14,7 @@ export const Content = () => {
                     <img className="content-about-image" src={aboutUsimage} />
                 </Grid>
                 <Grid item lg={7} xl={7} md={7} sm={12} xs={12}>
-                    <h1 class="content-head-text">
+                    <h1 className="content-head-text">
                         MEET OUR  <span style={{ color: theme.palette.secondary[200] }}>CREATIVE TEAM</span>
                     </h1>
                     <Box className="content-body">
