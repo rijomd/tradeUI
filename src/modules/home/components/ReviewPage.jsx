@@ -32,7 +32,15 @@ const RatingSection = ({ value }) => {
 export const ReviewPage = () => {
     const theme = useTheme();
     const sliderRef = React.useRef(null);
-    const isMobile = useMobile(false);
+    const isSM = useMobile(false);
+    const isXS = useMobile(true);
+
+
+    const sliders = () => {
+        if (isXS) return 1;
+        if (isSM) return 2;
+        else return 4;
+    }
 
     const goToPrevSlide = () => {
         if (sliderRef.current && sliderRef.current.swiper) {
@@ -54,7 +62,7 @@ export const ReviewPage = () => {
 
             <Box>
                 <Swiper
-                    slidesPerView={isMobile ? 1 : 4}
+                    slidesPerView={sliders()}
                     centeredSlides={false}
                     ref={sliderRef}
                     modules={[Pagination, Navigation]}
