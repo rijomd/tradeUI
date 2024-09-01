@@ -34,7 +34,7 @@ const HomePage = () => {
                 <Footer />
             </Box>
 
-            <div style={{ height: "15vh" }}></div>
+            <div style={{ height: "20vh" }}></div>
         </>
     )
 }

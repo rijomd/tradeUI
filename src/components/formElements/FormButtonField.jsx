@@ -7,7 +7,7 @@ export const FormButtonField = (props) => {
   return (
     <Tooltip title={label}>
       <Button
-        variant={'contained'}
+        variant={variant}
         size={size}
         color={color}
         endIcon={disabled && <CircularProgress />}

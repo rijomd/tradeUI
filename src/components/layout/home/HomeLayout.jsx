@@ -5,10 +5,9 @@ import { styled } from '@mui/material/styles';
 import { SideBar } from './SideBar';
 import { Header } from './Header';
 import { useMobile } from 'components/hooks/Hook';
-import { HeaderHeight } from 'themes/constants/ThemeConstants';
 import { Container } from '@mui/material';
 
-import "../style.css";
+import "../style/style.css";
 
 const HomeWrapper = styled('div')(({ theme }) => ({
     backgroundColor: theme.palette.primary.paper,

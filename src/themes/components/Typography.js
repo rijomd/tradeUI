@@ -61,16 +61,12 @@ export default function ThemeTypography(theme) {
     menuCaption: {
       fontSize: '0.875rem',
       fontWeight: 500,
-      color: theme.colors?.textBody,
-      padding: '6px',
-      textTransform: 'capitalize',
-      marginTop: '10px'
+      color: theme.colors?.textSecondary,
     },
     subMenuCaption: {
       fontSize: '0.6875rem',
       fontWeight: 500,
       color: theme.colors?.textSecondary,
-      textTransform: 'capitalize'
     },
     commonAvatar: {
       cursor: 'pointer',

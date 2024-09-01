@@ -8,7 +8,7 @@ import { CssBaseline } from "@mui/material";
 import { PageRouter } from "routes/PageRouter";
 import { getAuthToken } from "service/AuthMethods";
 
-import { Layout, HomeLayout } from 'components/layout';
+import { HomeLayout } from 'components/layout';
 import { LazyLoader } from "components/loader/LazyLoader";
 import { ErrorNotFound } from 'components/error/ErrorNotFound';
 
@@ -17,13 +17,14 @@ import Themes from "themes/components/Theme";
 function App() {
   const theme = useSelector((state) => state.theme);
   const HomePage = lazy(() => import("modules/home/views/HomePage"));
+  const Layout = lazy(() => import("components/layout/common/Layout.jsx"));
 
-  const PrivateRoute = ({ Component, auth }) => {
+  const privateRoute = (Component, auth) => {
     if (auth) {
       const data = getAuthToken();
       // need to add 403 condition from page list if components not exist 
       if (data) { return <Component />; }
-      else { return <Navigate to={`/`} />; }
+      else { return <Navigate to={`/login`} />; }
     }
     return <Component />;
   };
@@ -31,26 +32,26 @@ function App() {
   const renderGeneratedRoutes = useMemo(() => {
     let element = [];
     PageRouter.map((item) => {
-      const viewName = item.elementPath;
+      const viewName = item.viewName;
       const name = item.name;
       const moduleName = item.moduleName;
       let auth = item.auth;
 
       if (moduleName && viewName) {
-        const generated = lazy(() => import(`modules/${moduleName}/Views/${viewName}.tsx`));     /* @vite-ignore */
+        const generated = lazy(() => import(`modules/${moduleName}/views/${viewName}.jsx`));     /* @vite-ignore */
+        const DynamicLayout = lazy(() => import(`components/layout/${item?.layoutName}/Layout.jsx`));     /* @vite-ignore */
         element.push(
-          <Route key={name} element={<Layout />}>
+          <Route key={name} element={<DynamicLayout />}>
             <Route
               path={`${item.path}`}
-              element={<PrivateRoute Component={generated} auth={auth} />}
+              element={privateRoute(generated, auth)}
             />
           </Route>
         );
       }
-
     });
     return element;
-  }, [PageRouter]);
+  }, [window?.location?.pathname]);
 
   return (
     <BrowserRouter>

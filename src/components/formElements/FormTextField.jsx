@@ -23,14 +23,14 @@ export const FormTextField = (props) => {
       helperText={error?.errorMsg || ""}
       onChange={(e) => onChange(e)}
       onBlur={(e) => { onBlur(e) }}
-      InputProps={startAdornment || startAdornment && {
+      InputProps={startAdornment || endAdornment && {
         startAdornment: (
-          <InputAdornment position="start">
+          <InputAdornment position="start" sx={{ cursor: "pointer" }}>
             {startAdornment}
           </InputAdornment>
         ),
         endAdornment: (
-          <InputAdornment position="end">
+          <InputAdornment position="end" sx={{ cursor: "pointer" }}>
             {endAdornment}
           </InputAdornment>
         ),
