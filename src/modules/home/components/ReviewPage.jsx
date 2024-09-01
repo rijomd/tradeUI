@@ -32,7 +32,7 @@ const RatingSection = ({ value }) => {
 export const ReviewPage = () => {
     const theme = useTheme();
     const sliderRef = React.useRef(null);
-    const isMobile = useMobile();
+    const isMobile = useMobile(false);
 
     const goToPrevSlide = () => {
         if (sliderRef.current && sliderRef.current.swiper) {

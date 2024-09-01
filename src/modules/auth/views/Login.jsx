@@ -17,10 +17,10 @@ const Login = ({ }) => {
 
     return (
         <Grid container spacing={2} className='login-container' sx={{ backgroundImage: `url(${image})`, }}>
-            <Grid item md={7} lg={7} xl={7} >
+            <Grid item xs={12} sm={12} md={7} lg={7} xl={7} >
                 {/* <img src={image} /> */}
             </Grid>
-            <Grid item md={5} lg={5} xl={5} className='login-sub-container'>
+            <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className='login-sub-container'>
                 <Box p={2}>
                     <Typography variant='h1' >Welcome...</Typography>
                     <Typography variant='h2' >Please enter the login details</Typography>

@@ -15,3 +15,10 @@
     align-items: center;
     justify-content: center;
 }
+
+/* xs */
+@media (max-width: 600px) {
+    .login-container {
+        height: 100%;
+    }
+}

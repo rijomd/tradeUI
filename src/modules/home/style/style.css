@@ -372,7 +372,7 @@
 
 
 
-/* for sm */
+/* for xs */
 @media (max-width: 600px) {
   .content-about-image {
     object-fit: cover;
@@ -416,8 +416,19 @@
   }
 }
 
+/* for sm */
+@media (max-width: 900px) {
+  .contact-container .div2 {
+    display: none;
+  }
 
-
+  .contact-container .div1 {
+    width: 100%;
+    position: relative;
+    height: max-content;
+    backdrop-filter: none;
+  }
+}
 
 
 
