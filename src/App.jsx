@@ -1,6 +1,7 @@
 import React, { lazy, useMemo, Suspense } from "react";
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from "@mui/material";
@@ -55,6 +56,14 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        draggable
+        pauseOnHover
+        theme="dark"
+        hideProgressBar={true}
+      />
       <ThemeProvider theme={Themes(theme)}>
         <CssBaseline />
         <Suspense fallback={<LazyLoader />}>

@@ -1,14 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import { ContactUsForm } from '../forms/ContactUsForm';
 import logo from "assets/images/aboutLogo.jpg";
 import contactImage from "assets/images/contactusFull.jpeg";
+// import { contactUSAction } from '../reducer/HomeAction';
+import { ContactUsForm } from '../forms/ContactUsForm';
+import { useAlert } from 'components/hooks/Hook';
 
 
 export const ContactUs = ({ }) => {
     const theme = useTheme();
+    const dispatch = useDispatch();
+
+    const handleSubmit = async (data) => {
+        useAlert("success", "success");
+        // dispatch(contactUSAction(data));
+    }
 
     return (
         <Container>
@@ -26,7 +35,7 @@ export const ContactUs = ({ }) => {
                                     <img src={logo} />
                                 </Grid>
                                 <Grid item md={7} lg={7} xs={12}>
-                                    <ContactUsForm />
+                                    <ContactUsForm handleSubmit={handleSubmit} />
                                 </Grid>
                             </Grid>
                         </Box>

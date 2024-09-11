@@ -3,16 +3,14 @@ import { Grid } from '@mui/material';
 import { FormTextField } from 'components/formElements/FormTextField';
 import { FormButtonField } from 'components/formElements/FormButtonField';
 
-export const ContactUsForm = () => {
+export const ContactUsForm = ({ handleSubmit }) => {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
     const onChange = (e) => {
         setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
     }
 
-    const handleSubmit = () => {
 
-    }
 
     return (
         <Grid container spacing={2}>
@@ -52,7 +50,7 @@ export const ContactUsForm = () => {
                 />
             </Grid>
             <Grid item md={12} lg={12} xs={12}>
-                <FormButtonField onClick={handleSubmit} size="large"
+                <FormButtonField onClick={() => { handleSubmit(formData) }} size="large"
                     label="Submit" sx={{ fontWeight: 600, textTransform: "capitalize" }}>
                     Submit
                 </FormButtonField>
