@@ -53,7 +53,7 @@ export const Header = ({ toggleDrawer, isMobile }) => {
                             component="div"
                             onClick={() => { navigate("/login"); }}
                         >
-                            Let Get Started
+                            Login
                         </Typography>
                         <Typography
                             sx={{ ':hover': { color: theme.palette.secondary[200] } }}

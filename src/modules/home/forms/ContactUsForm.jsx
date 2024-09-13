@@ -4,7 +4,7 @@ import { FormTextField } from 'components/formElements/FormTextField';
 import { FormButtonField } from 'components/formElements/FormButtonField';
 
 export const ContactUsForm = ({ handleSubmit }) => {
-    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+    const [formData, setFormData] = useState({ CustomerName: "", email: "", message: "" });
 
     const onChange = (e) => {
         setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
@@ -17,11 +17,11 @@ export const ContactUsForm = ({ handleSubmit }) => {
             <Grid item md={12} lg={12} xs={12}>
                 <FormTextField
                     onChange={onChange}
-                    name="name"
+                    name="CustomerName"
                     label="Full Name"
                     placeholder="Full name"
                     type="text"
-                    value={formData['name']}
+                    value={formData['CustomerName']}
                     size="large"
                 />
             </Grid>

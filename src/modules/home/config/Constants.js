@@ -3,7 +3,7 @@ import image from "assets/images/reviewImage.jpg"
 import news from "assets/images/newsletter.jpg"
 
 export const homeUrl = getMyAPiUrl() + "/home";
-export const contactUSUrl = getMyAPiUrl() + "/contact";
+export const contactUSUrl = getMyAPiUrl() + "/enquiry/contactus";
 
 
 export const errorMessage = "Something Wrong!";

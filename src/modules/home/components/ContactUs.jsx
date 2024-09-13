@@ -5,18 +5,15 @@ import { useTheme } from '@mui/material/styles';
 
 import logo from "assets/images/aboutLogo.jpg";
 import contactImage from "assets/images/contactusFull.jpeg";
-// import { contactUSAction } from '../reducer/HomeAction';
+import { contactUSAction } from '../reducer/HomeAction';
 import { ContactUsForm } from '../forms/ContactUsForm';
-import { useAlert } from 'components/hooks/Hook';
-
 
 export const ContactUs = ({ }) => {
     const theme = useTheme();
     const dispatch = useDispatch();
 
     const handleSubmit = async (data) => {
-        useAlert("success", "success");
-        // dispatch(contactUSAction(data));
+        dispatch(contactUSAction(data));
     }
 
     return (
