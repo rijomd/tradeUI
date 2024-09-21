@@ -15,7 +15,8 @@ const MainStyled = styled('main', { shouldForwardProp: (prop) => prop !== 'open'
     ...theme.typography.body1,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    marginTop: 88,
+    marginTop: 65,
+    backgroundColor: theme.palette.background.paperSecondary,
     transition: theme.transitions.create(
         'margin',
         leftDrawerOpened
@@ -62,21 +63,22 @@ const Layout = () => {
 
     const sideBar = useMemo(() => (
         <Sidebar drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
-      ), [leftDrawerOpened])
+    ), [leftDrawerOpened])
 
     return (
         <Box sx={{ minHeight: "100vh", display: "flex" }}>
             <CssBaseline />
             <AppBar
                 enableColorOnDark
-                position="fixed" color="inherit"
+                position="fixed"
+                color="inherit"
                 elevation={0}
                 sx={{
                     bgcolor: theme.palette.background.default,
                     transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
                 }}
             >
-                <Toolbar>
+                <Toolbar sx={{ padding: 1 }}>
                     <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
                 </Toolbar>
             </AppBar>

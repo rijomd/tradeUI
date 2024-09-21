@@ -33,3 +33,29 @@
 .profile-section h6 {
     padding: 0px 8px;
 }
+
+/* for selected side menus */
+.css-cr2sry-MuiButtonBase-root-MuiListItemButton-root.Mui-selected {
+    background: linear-gradient(90deg, #C300AB 0%, #19001F 100%);
+    color: #fff !important;
+}
+
+.css-cr2sry-MuiButtonBase-root-MuiListItemButton-root.Mui-selected .MuiListItemIcon-root {
+    color: #fff !important;
+}
+
+.logout-section {
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.footer-section {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+}

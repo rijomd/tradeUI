@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import { useTheme } from '@mui/material/styles';
-import { Box, Chip, Drawer, Stack, useMediaQuery } from '@mui/material';
+import { Box, Chip, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Typography, useMediaQuery } from '@mui/material';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { BrowserView, MobileView } from 'react-device-detect';
@@ -8,11 +10,59 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { LogoSection } from '../logoSection';
 import { REACT_APP_VERSION } from 'service/AuthConstants';
 import { DrawerWidthCommon } from 'themes/constants/ThemeConstants';
+import { MenuItems } from 'routes/SideMenuItems';
 
 
 export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window }) => {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
+  // const LoginIcon = React.lazy(() => import('@mui/icons-material/Login'));
+
+  const menuList = () => {
+    return <List>
+      {MenuItems.map((item, index) => {
+        const selected = location.pathname?.toLocaleLowerCase() === item.path?.toLocaleLowerCase();
+        return <ListItemButton
+          key={index}
+          disabled={item.disabled}
+          sx={{
+            borderRadius: '8px',
+            mb: 0.5,
+            alignItems: 'flex-start',
+            backgroundColor: 'inherit',
+            py: 1,
+            pl: `24px`
+          }}
+          selected={selected}
+          onClick={() => navigate(item?.path)}
+        >
+          <ListItemIcon sx={{ my: 'auto', minWidth: 18, paddingRight: 1 }}> <item.icon /> </ListItemIcon>
+          <ListItemText
+            primary={
+              <Typography variant={'body1'} color="inherit">
+                {item?.menuName}
+              </Typography>
+            }
+          />
+        </ListItemButton>
+      })}
+    </List>
+  }
+
+  const footerSection = () => {
+    return <Box className="footer-section">
+      <Box className="logout-section" sx={{ background: theme.palette.background.paperSecondary }}>
+        {/* <LoginIcon /> */}
+        <Typography variant='body1'>Log Out</Typography>
+      </Box>
+      <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
+        <Chip label={REACT_APP_VERSION} disabled color="secondary" size="small" sx={{ cursor: 'pointer' }} />
+      </Stack>
+    </Box>
+  }
 
   const drawer = (
     <>
@@ -30,18 +80,14 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
             paddingRight: '16px'
           }}
         >
-          {/* <MenuList /> */}
-          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            <Chip label={REACT_APP_VERSION} disabled color="secondary" size="small" sx={{ cursor: 'pointer' }} />
-          </Stack>
+          {menuList()}
+          {footerSection()}
         </PerfectScrollbar>
       </BrowserView>
       <MobileView>
         <Box sx={{ px: 2 }}>
-          {/* <MenuList /> */}
-          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            <Chip label={REACT_APP_VERSION} disabled color="secondary" size="small" sx={{ cursor: 'pointer' }} />
-          </Stack>
+          {menuList()}
+          {footerSection()}
         </Box>
       </MobileView>
     </>

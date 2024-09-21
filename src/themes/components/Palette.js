@@ -68,7 +68,8 @@ export default function ThemePalette(theme) {
     },
     background: {
       paper: theme.paper,
-      default: theme.backgroundDefault
+      default: theme.backgroundDefault,
+      paperSecondary: theme.colors?.paperSecondary
     },
   };
 }
