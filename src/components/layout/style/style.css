@@ -3,3 +3,33 @@
         padding: 0px !important;
     }
 }
+
+/* remove this after insert logo now its a tag */
+.log-section {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: x-large;
+}
+
+
+.profile-section {
+    display: flex;
+    border-radius: 30px;
+    border: 1px solid #363636;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile-section img {
+    border-radius: 40px;
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+}
+
+.profile-section h6 {
+    padding: 0px 8px;
+}
