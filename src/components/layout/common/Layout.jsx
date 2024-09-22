@@ -1,6 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Container } from "@mui/material";
 
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
@@ -16,7 +15,6 @@ const MainStyled = styled('main', { shouldForwardProp: (prop) => prop !== 'open'
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     marginTop: 65,
-    backgroundColor: theme.palette.background.paperSecondary,
     transition: theme.transitions.create(
         'margin',
         leftDrawerOpened
@@ -33,9 +31,9 @@ const MainStyled = styled('main', { shouldForwardProp: (prop) => prop !== 'open'
         marginLeft: leftDrawerOpened ? 0 : -(DrawerWidthCommon),
         width: leftDrawerOpened ? `calc(100% - ${DrawerWidthCommon}px)` : '100%'
     },
-    [theme.breakpoints.down('md')]: {
-        width: leftDrawerOpened ? `calc(100% - ${DrawerWidthCommon}px)` : '100%',
-        padding: '16px'
+    [theme.breakpoints.between('sm', 'md')]: {
+        width: `100%`,
+        padding: '16px',
     },
     [theme.breakpoints.down('sm')]: {
         width: `100%`,

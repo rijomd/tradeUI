@@ -1,9 +1,11 @@
 import React from 'react';
+import { PageOutLine } from 'components/pageOutline/PageOutLine';
 
 const Investments = () => {
     return (
         <>
-            Investments
+            <PageOutLine title="Investments">
+            </PageOutLine>
         </>
     )
 }

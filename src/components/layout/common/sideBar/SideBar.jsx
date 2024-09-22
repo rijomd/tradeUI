@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import { useTheme } from '@mui/material/styles';
 import { Box, Chip, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Typography, useMediaQuery } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { BrowserView, MobileView } from 'react-device-detect';
@@ -17,9 +18,7 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
-
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
-  // const LoginIcon = React.lazy(() => import('@mui/icons-material/Login'));
 
   const menuList = () => {
     return <List>
@@ -53,15 +52,15 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
   }
 
   const footerSection = () => {
-    return <Box className="footer-section">
+    return (<Box className="footer-section">
       <Box className="logout-section" sx={{ background: theme.palette.background.paperSecondary }}>
-        {/* <LoginIcon /> */}
+        <LoginIcon sx={{ paddingRight: 1 }} />
         <Typography variant='body1'>Log Out</Typography>
       </Box>
       <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
         <Chip label={REACT_APP_VERSION} disabled color="secondary" size="small" sx={{ cursor: 'pointer' }} />
       </Stack>
-    </Box>
+    </Box>);
   }
 
   const drawer = (
