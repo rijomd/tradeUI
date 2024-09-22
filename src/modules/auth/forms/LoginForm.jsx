@@ -5,7 +5,7 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { FormTextField } from 'components/formElements/FormTextField';
 
 export const LoginForm = forwardRef(({ handleSubmit = () => { } }, ref) => {
-    const [formData, setFormData] = useState({ password: "", email: "" });
+    const [formData, setFormData] = useState({ password: "", user_name: "" });
     const [typeText, setTypeText] = useState(false);
     const buttonRef = useRef(null);
 
@@ -22,11 +22,11 @@ export const LoginForm = forwardRef(({ handleSubmit = () => { } }, ref) => {
             <Grid item md={12} xs={12}>
                 <FormTextField
                     onChange={onChange}
-                    name="email"
+                    name="user_name"
                     label="User Name"
                     placeholder="User name"
                     type="text"
-                    value={formData['email']}
+                    value={formData['user_name']}
                     size="large"
                     variant="standard"
                 />

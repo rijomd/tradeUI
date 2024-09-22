@@ -1,18 +1,21 @@
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { Box, Grid, Typography } from '@mui/material';
 
 import { FormButtonField } from 'components/formElements/FormButtonField';
 import { LoginForm } from '../forms/LoginForm';
+import { loginAction } from '../reducer/AuthAction';
 
 import image from "assets/images/loginImage.jpeg";
 import '../style/style.css';
 
 const Login = ({ }) => {
     const formRef = useRef(null);
+    const dispatch = useDispatch();
 
     const handleSubmit = (data) => {
         console.log(data);
-
+        dispatch(loginAction(data));
     }
 
     return (
