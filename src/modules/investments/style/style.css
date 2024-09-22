@@ -1,0 +1,27 @@
+.investmentDetail-container {
+    box-shadow: 0px 10px 20px 0px #00000040;
+    padding: 10px;
+}
+
+.investmentDetail-div1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20px !important;
+}
+
+.investmentDetail-div1 h2,
+p {
+    text-align: left;
+    width: 100%;
+}
+
+.pieChart-container {
+    box-shadow: 0px 10px 20px 0px #00000040;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

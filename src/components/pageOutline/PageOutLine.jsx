@@ -37,7 +37,7 @@ export const MemorizedPageOutLine = ({ children, isLoading = false, title, actio
                 </Backdrop>
 
                 <Grid container  >
-                    {title && <Grid item md={12} xs={12} xl={12} lg={12}>
+                    {title && <Grid item md={12} xs={12} xl={12} lg={12} pb={1} sx={{ alignItems: 'center', boxShadow: "0px 10px 20px 0px #00000040" }}>
                         <Grid container spacing={2}
                             sx={{ alignItems: 'center' }}
                         >
