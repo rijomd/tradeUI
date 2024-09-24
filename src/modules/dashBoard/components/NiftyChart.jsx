@@ -76,7 +76,9 @@ const NiftyChart = () => {
     }, []);
 
     return (
-        <Box ref={chartContainerRef} style={{ width: '100%', height: "auto" }}></Box>
+        <Box className="details-main-container">
+            <Box  ref={chartContainerRef} style={{ width: '100%', height: "auto" }}></Box>
+        </Box>
     );
 };
 

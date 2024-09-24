@@ -10,7 +10,7 @@ export const LogoSection = () => {
       disableRipple
       component={Link} to={config.defaultPath}
     >
-      GROWWISE
+      Growwise
     </ButtonBase>
   );
 };

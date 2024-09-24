@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
@@ -11,6 +11,16 @@ import { ContactUsForm } from '../forms/ContactUsForm';
 export const ContactUs = ({ }) => {
     const theme = useTheme();
     const dispatch = useDispatch();
+    const home = useSelector((state) => state.home);
+    const init = { CustomerName: "", email: "", message: "" };
+    const [formData, setFormData] = useState(init);
+
+    useEffect(() => {
+        if (home?.status === "success") {
+            setFormData({ ...init })
+        }
+    }, [home?.status]);
+
 
     const handleSubmit = async (data) => {
         dispatch(contactUSAction(data));
@@ -32,7 +42,7 @@ export const ContactUs = ({ }) => {
                                     <img src={logo} />
                                 </Grid>
                                 <Grid item md={7} lg={7} xs={12}>
-                                    <ContactUsForm handleSubmit={handleSubmit} />
+                                    <ContactUsForm handleSubmit={handleSubmit} init={formData} isLoading={home.status} />
                                 </Grid>
                             </Grid>
                         </Box>

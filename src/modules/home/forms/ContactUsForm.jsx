@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import { FormTextField } from 'components/formElements/FormTextField';
 import { FormButtonField } from 'components/formElements/FormButtonField';
 
-export const ContactUsForm = ({ handleSubmit }) => {
-    const [formData, setFormData] = useState({ CustomerName: "", email: "", message: "" });
+export const ContactUsForm = ({ handleSubmit, init, isLoading }) => {
+    const [formData, setFormData] = useState(init);
+    useEffect(() => {
+        setFormData({ ...init })
+    }, [init])
+
 
     const onChange = (e) => {
         setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
     }
-
-
 
     return (
         <Grid container spacing={2}>
@@ -51,6 +53,7 @@ export const ContactUsForm = ({ handleSubmit }) => {
             </Grid>
             <Grid item md={12} lg={12} xs={12}>
                 <FormButtonField onClick={() => { handleSubmit(formData) }} size="large"
+                    disabled={isLoading === "loading"}
                     label="Submit" sx={{ fontWeight: 600, textTransform: "capitalize" }}>
                     Submit
                 </FormButtonField>

@@ -53,7 +53,7 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
 
   const footerSection = () => {
     return (<Box className="footer-section">
-      <Box className="logout-section" sx={{ background: theme.palette.background.paperSecondary }}>
+      <Box className="logout-section" sx={{ background: "#FFFFFF1A" }}>
         <LoginIcon sx={{ paddingRight: 1 }} />
         <Typography variant='body1'>Log Out</Typography>
       </Box>
@@ -105,7 +105,7 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
         sx={{
           '& .MuiDrawer-paper': {
             width: DrawerWidthCommon,
-            background: theme.palette.background.default,
+            background: theme.palette.background.paperDrawer,
             color: theme.palette.text.primary,
             borderRight: 'none',
             [theme.breakpoints.up('md')]: {
@@ -114,7 +114,7 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
           }
         }}
         ModalProps={{ keepMounted: true }}
-        color="inherit"
+        // color="inherit"
       >
         {drawer}
       </Drawer>

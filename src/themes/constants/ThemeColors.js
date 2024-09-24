@@ -2,6 +2,7 @@ export const lightThemeColors = {
     // paper & background
     paper: "#ffffff",
     paperSecondary: "#edeaea",
+    paperDrawer: "#11000E",
 
     // primary
     primaryLight: "#eef2f6",
@@ -84,6 +85,7 @@ export const darkThemeColors = {
     ...lightThemeColors,
     paper: "#040404",
     paperSecondary: "#181818",
+    paperDrawer: "#11000E",
 
     // primary
     primaryLight: "#eef2f6",
