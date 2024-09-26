@@ -2,16 +2,9 @@ import React from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import { styled, useTheme } from '@mui/material/styles';
-import { Typography, Link, useMediaQuery, Backdrop, Grid, Divider } from '@mui/material';
+import { Typography, Link, useMediaQuery, Backdrop, Grid, Box } from '@mui/material';
 import { PageLoader } from 'components/loader/PageLoader';
 
-const Copyright = () => {
-    return (
-        <Typography variant="subtitle2" color="grey.500" align="center" component={Link}>
-            {`Copyright © www.growwise.com © ${new Date().getFullYear()}`}
-        </Typography>
-    );
-}
 
 export const MemorizedPageOutLine = ({ children, isLoading = false, title, actions = [] }) => {
     const theme = useTheme();
@@ -26,6 +19,14 @@ export const MemorizedPageOutLine = ({ children, isLoading = false, title, actio
         border: `1px solid ${theme.palette.primary.main}`
     }));
 
+    const Copyright = () => {
+        return <Box  >
+            <Typography variant="subtitle2" color="grey.500" align="center" component={Link}>
+                {`Copyright © www.growwise.com © ${new Date().getFullYear()}`}
+            </Typography>
+        </Box>
+    }
+
     return (
         <PageWrapper>
             <PerfectScrollbar component="div">
@@ -36,7 +37,7 @@ export const MemorizedPageOutLine = ({ children, isLoading = false, title, actio
                     <PageLoader />
                 </Backdrop>
 
-                <Grid container  >
+                <Grid container spacing={2} >
                     {title && <Grid item md={12} xs={12} xl={12} lg={12} pb={1} sx={{ alignItems: 'center', boxShadow: "0px 10px 20px 0px #00000040" }}>
                         <Grid container spacing={2}
                             sx={{ alignItems: 'center' }}
@@ -53,7 +54,7 @@ export const MemorizedPageOutLine = ({ children, isLoading = false, title, actio
                     <Grid item md={12} xs={12} xl={12} lg={12} >
                         {children}
                     </Grid>
-                    <Grid item md={12} xs={12} xl={12} lg={12} sx={{ textAlign: 'center', marginTop: 1.5 }}>
+                    <Grid item md={12} xs={12} xl={12} lg={12} sx={{ background: "##151515", textAlign: "center" }} pt={3} pb={3} mt={2} >
                         <Copyright />
                     </Grid>
                 </Grid>

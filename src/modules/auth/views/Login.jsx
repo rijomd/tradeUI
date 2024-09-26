@@ -44,8 +44,7 @@ const Login = ({ }) => {
                         Login
                     </FormButtonField>
                     <Box sx={{ cursor: "pointer", display: "flex" }} pb={2} pt={2}>
-                        <Typography variant='body1' >Don't have an account ?</Typography>
-                        <Typography variant='menuCaption' pl={2}>Sign Up</Typography>
+                        <Typography variant='menuCaption' >New to growwise</Typography>
                     </Box>
                 </Box>
             </Grid>
