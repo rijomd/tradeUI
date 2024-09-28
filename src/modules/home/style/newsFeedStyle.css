@@ -1,0 +1,21 @@
+.news-letter-container {
+    height: auto;
+    border-radius: 30px;
+    background: transparent;
+  }
+  
+  .news-letter-container img {
+    height: 280px;
+    object-fit: cover;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 100%;
+  }
+  
+  .news-letter-container h3 {
+    padding: 4px 0px;
+  }
+  
+  .news-letter-container p {
+    padding: 8px 0px;
+  }
