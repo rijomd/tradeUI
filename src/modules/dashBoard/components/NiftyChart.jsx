@@ -18,13 +18,20 @@ const NiftyChart = () => {
             layout: {
                 textColor: theme.palette.primary.light,
                 background: { type: 'solid', color: theme.palette.background.paperSecondary },
-                textColor: theme.palette.text.primary,
+            },
+            grid: {
+                vertLines: {
+                    color: "#2A2A2A",
+                },
+                horzLines: {
+                    color: "#2A2A2A"
+                },
             },
             height: 400,
         };
 
         chartRef.current = createChart(chartContainerRef.current, chartOptions);
-        seriesRef.current = chartRef.current.addCandlestickSeries({
+        seriesRef.current = chartRef.current?.addCandlestickSeries({
             upColor: theme.palette.secondary.main,
             downColor: 'green',
             borderVisible: false,
@@ -33,9 +40,9 @@ const NiftyChart = () => {
         });
 
         const data = generateData(5000, 20, 3000);
-        seriesRef.current.setData(data.initialData);
+        seriesRef.current?.setData(data.initialData);
 
-        lineSeriesRef.current = chartRef.current.addLineSeries({
+        lineSeriesRef.current = chartRef.current?.addLineSeries({
             color: 'red',
             lineWidth: 2,
         });
@@ -48,36 +55,36 @@ const NiftyChart = () => {
 
         lineSeriesRef.current.setData(lineData);
 
-        chartRef.current.timeScale().fitContent();
-        chartRef.current.timeScale().scrollToPosition(5);
+        chartRef.current?.timeScale()?.fitContent();
+        chartRef.current?.timeScale()?.scrollToPosition(5);
 
-        const streamingDataProvider = getNextRealtimeUpdate(data.realtimeUpdates);
+        const streamingDataProvider = getNextRealtimeUpdate(data?.realtimeUpdates);
 
         intervalIdRef.current = setInterval(() => {
             const update = streamingDataProvider.next();
             if (update.done) {
-                clearInterval(intervalIdRef.current);
+                clearInterval(intervalIdRef?.current);
                 return;
             }
-            seriesRef.current.update(update.value);
+            seriesRef.current?.update(update?.value);
         }, 100);
 
         const resizeObserver = new ResizeObserver(() => {
-            chartRef.current.applyOptions({ width: chartContainerRef.current.clientWidth });
+            chartRef.current?.applyOptions({ width: chartContainerRef.current?.clientWidth });
         });
 
-        resizeObserver.observe(chartContainerRef.current);
+        resizeObserver.observe(chartContainerRef?.current);
 
         return () => {
-            clearInterval(intervalIdRef.current);
+            clearInterval(intervalIdRef?.current);
             resizeObserver.disconnect();
-            chartRef.current.remove();
+            chartRef.current?.remove();
         };
     }, []);
 
     return (
         <Box className="details-main-container">
-            <Box  ref={chartContainerRef} style={{ width: '100%', height: "auto" }}></Box>
+            <Box ref={chartContainerRef} style={{ width: '100%', height: "auto" }}></Box>
         </Box>
     );
 };

@@ -8,14 +8,15 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 export const BarGraph = ({ color }) => {
     const data = {
-        labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
+        labels: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r'],
         datasets: [
             {
                 label: '',
-                data: [1, 4, 2, 9, 12, 7, 14, 5],
+                data: [1, 4, 2, 9, 12, 7, 14, 5, 13, 8, 6, 14, 3, 9, 11, 6, 15, 2, 6],
                 backgroundColor: color,
                 borderColor: color,
                 borderWidth: 1,
+                barThickness: 4,
             },
         ],
     };
@@ -33,6 +34,14 @@ export const BarGraph = ({ color }) => {
             },
         },
         scales: {
+            x: {
+                grid: {
+                    display: false,  // Optional: Hide the vertical grid lines
+                },
+                barPercentage: 1.0,
+                categoryPercentage: 0.2,
+                offset: true,
+            },
             y: {
                 beginAtZero: true,
             },

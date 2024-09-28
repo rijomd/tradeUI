@@ -39,13 +39,13 @@ export const PieChart = ({ graphData }) => {
 
     return (
         <Box className="pieChart-container" >
-            <Box sx={{ height: "290px" }}>
+            <Box sx={{ height: "250px" }}>
                 <Doughnut data={data} options={options} />
             </Box>
             <Box sx={{ width: isMobile ? "100%" : "80%" }} mt={3}>
                 {graphData?.labels.map((label, index) => (
                     <Box key={index} sx={{ backgroundColor: "#1B1B1B", padding: "2px" }}>
-                        <Grid container sx={{ backgroundColor: "#323232", margin: 0, padding: "5px" }}>
+                        <Grid container sx={{ backgroundColor: "#323232", margin: 0, padding: "8px" }}>
                             <Grid item md={3} lg={3} xs={3}>
                                 <p
                                     style={{

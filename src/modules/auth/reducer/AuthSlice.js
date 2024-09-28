@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { loginAction } from "./AuthAction";
+import { loginAction, sighInAction } from "./AuthAction";
 import { errorMessage, successMessage } from "../config/Constants";
 
 
@@ -29,6 +29,18 @@ export const authSlice = createSlice({
       state.error = successMessage;
     });
     builder.addCase(loginAction.rejected, (state, action) => {
+      state.status = "failed";
+      state.error = action.payload || errorMessage;
+    });
+
+    builder.addCase(sighInAction.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(sighInAction.fulfilled, (state, action) => {
+      state.status = "success";
+      state.error = successMessage;
+    });
+    builder.addCase(sighInAction.rejected, (state, action) => {
       state.status = "failed";
       state.error = action.payload || errorMessage;
     });

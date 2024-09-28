@@ -25,3 +25,10 @@ p {
     align-items: center;
     flex-direction: column;
 }
+
+@media (max-width: 600px) {
+    .investmentDetail-div1 h2,
+    p {
+        text-align: center;
+    }
+}
