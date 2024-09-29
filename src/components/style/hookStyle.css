@@ -17,3 +17,9 @@
     background-color: #2196f3 !important;
     color: white;
 }
+
+.toast-theme {
+    background: linear-gradient(90deg, #C300AB 0%, #19001F 100%) !important;
+    color: white;
+    width: '100%';
+}

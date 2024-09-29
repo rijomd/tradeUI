@@ -1,6 +1,8 @@
-import CreditScoreIcon from '@mui/icons-material/CreditScore';
-import HomeIcon from '@mui/icons-material/Home';
-import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
+
+import HomeIcon from 'assets/icons/Home.svg';
+import InvestmentsIcon from 'assets/icons/Investments.svg';
+import PaymentsIcon from 'assets/icons/Payments.svg';
+
 
 export const MenuItems = [
     {
@@ -13,13 +15,13 @@ export const MenuItems = [
     {
         name: "investments",
         menuName: "Investments",
-        icon: AssuredWorkloadIcon,
+        icon: InvestmentsIcon,
         path: "/investments"
     },
     {
         name: "payments",
         menuName: "Payments",
-        icon: CreditScoreIcon,
+        icon: PaymentsIcon,
         path: "/payments"
     }
 ];

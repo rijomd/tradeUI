@@ -9,7 +9,7 @@ export const contactUSAction = createAsyncThunk(
     async (body, thunkAPI) => {
         try {
             const response = await axios.post(contactUSUrl, body);
-            useAlert("success", "success");
+            useAlert("Welcome to growwise", "success");
             return response.data;
         } catch (error) {
             const errorMessage = error.response.data.message || "Something Wrong!";

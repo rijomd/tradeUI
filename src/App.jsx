@@ -58,11 +58,19 @@ function App() {
     <BrowserRouter>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={8000}
         draggable
         pauseOnHover
         theme="dark"
         hideProgressBar={true}
+        style={{
+          margin: '0 auto',
+          maxWidth: "90%",
+          width: "100%",
+          left: 0,
+          right: 0,
+          boxSizing: 'border-box',
+        }}
       />
       <ThemeProvider theme={Themes(theme)}>
         <CssBaseline />

@@ -53,7 +53,7 @@ export const ContactUsForm = ({ handleSubmit, init, isLoading }) => {
             </Grid>
             <Grid item md={12} lg={12} xs={12}>
                 <FormButtonField onClick={() => { handleSubmit(formData) }} size="large"
-                    disabled={isLoading === "loading"}
+                    isLoading={isLoading === "loading"}
                     label="Submit" sx={{ fontWeight: 600, textTransform: "capitalize" }}>
                     Submit
                 </FormButtonField>
