@@ -10,7 +10,6 @@ import { NewsFeed } from 'modules/home/components/NewsFeed';
 import news from "assets/images/newsletter.jpg"
 
 import "../style/style.css";
-import "modules/home/style/newsFeedStyle.css";
 
 const Investments = () => {
 
@@ -107,7 +106,12 @@ const Investments = () => {
 
     const newsData = {
         subTitle: "industry's standard",
-        content: "Simply dummy text of the printing and It has survived not only five centuries, but also the leap into electronic",
+        content: "Simply dummy text of the printing and It has survived not only five centuries, but also the leap into electronic ," +
+            "Simply dummy text of the printing and It has survived not only five centuries, but also the leap into electronic " +
+            "Simply dummy text of the printing and It has survived not only five centuries, but also the leap into electronic " +
+            "Simply dummy text of the printing and It has survived not only five centuries, but also the leap into electronic " +
+            "Simply dummy text of the printing and It has survived not only five centuries, but also the leap into electronic " +
+            "Simply dummy text of the printing and It has survived not only five centuries, but also the leap into electronic ",
         imageUrl: news,
     };
 

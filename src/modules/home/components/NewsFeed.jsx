@@ -22,9 +22,9 @@ export const NewsFeed = ({ item = {}, handleSubmit, isHideButton }) => {
                 </Typography>
                 <Box className="news-letter-content">
                     <Typography variant='body1'>
-                        {item?.content?.length > 500 ? (
+                        {item?.content?.length > 250 ? (
                             <>
-                                {item?.content.substring(0, 500)}
+                                {item?.content.substring(0, 250)}
                                 {seeMore}
                             </>
                         ) : (item.content)}

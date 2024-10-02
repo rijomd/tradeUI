@@ -26,7 +26,31 @@ p {
     flex-direction: column;
 }
 
+/* new feed section  */
+.news-letter-container {
+    height: 280px;
+}
+
+.news-letter-container img {
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 100%;
+    height: auto;
+}
+
+.news-letter-container h3 {
+    padding: 4px 0px;
+}
+
+.news-letter-container p {
+    padding: 8px 0px;
+    text-align: left;
+}
+
+
 @media (max-width: 600px) {
+
     .investmentDetail-div1 h2,
     p {
         text-align: center;
