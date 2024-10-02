@@ -14,7 +14,8 @@ const Login = ({ }) => {
     const dispatch = useDispatch();
 
     const handleSubmit = (data) => {
-        console.log(data);
+        console.log(data,"data");
+        
         dispatch(loginAction(data));
     }
 

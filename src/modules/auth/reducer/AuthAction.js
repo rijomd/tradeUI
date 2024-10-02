@@ -3,6 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "service/Request";
 import { loginUrl, signInUrl } from "../config/Constants";
 import { AUTH_USER, ACCESS_TOKEN } from "service/AuthConstants";
+import { useAlert } from "components/hooks/Hook";
 
 
 export const loginAction = createAsyncThunk(
@@ -10,6 +11,7 @@ export const loginAction = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const response = await axios.post(loginUrl, body);
+      console.log(response);
       if (response.statusText !== "OK") {
         throw new Error(`HTTP error! Status: ${response.status || "590"}`);
       }
@@ -17,8 +19,8 @@ export const loginAction = createAsyncThunk(
       localStorage.setItem(ACCESS_TOKEN, response.access_token);
       return response.data;
     } catch (error) {
-      const errorMessage =
-        error.response.data.message || "Something Wrong!";
+      const errorMessage = error.response.data || "Something Wrong!";
+      useAlert(errorMessage, "error");
       return thunkAPI.rejectWithValue(errorMessage);
     }
   }

@@ -15,14 +15,14 @@ const detailsStyle = {
 };
 
 export const PaymentScheduler = ({ open = false, handleClose = () => { }, paymentData = {}, submitSchedule = () => { } }) => {
-    const { totalFridays } = getFridays(5, 3);
+    const totalFridays = getFridays(8);
     const xs = useMobile(true);
     const theme = useTheme();
     const [boxIndex, setBoxIndex] = useState(null);
     const [box, setBox] = useState(null);
 
     const style = {
-        bgcolor: 'background.paper',
+        bgcolor: theme.palette.background.paperSecondary,
         border: '1px solid #434242',
         padding: "8px",
         display: 'flex',

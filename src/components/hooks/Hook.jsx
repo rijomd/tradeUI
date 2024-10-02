@@ -11,7 +11,6 @@ export const useMobile = (xs) => {
 };
 
 export const useAlert = (msg, type = 'success') => {
-
   const classNames = {
     success: 'toast-success',
     error: 'toast-error',
@@ -26,46 +25,32 @@ export const useAlert = (msg, type = 'success') => {
   });
 };
 
-
-export const getFridays = (numNext, numPrevious) => {
+export const getFridays = (count) => {
   const today = new Date();
+  const fridays = [];
+  let current = new Date(today);
 
-  const formatDate = (date) => {
+  // Get the day of the week (0 = Sunday, 1 = Monday, ..., 5 = Friday)
+  const todayDay = current.getDay();
+
+  // Move to the next Friday if today is before Friday
+  if (todayDay <= 5) {
+    current.setDate(current.getDate() + (5 - todayDay)); // This week’s Friday
+    current.setDate(current.getDate() + 7); // Next week’s Friday
+  }
+
+  while (fridays.length < count) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const label = date.toLocaleDateString('en-US', options); //  August 20, 2024
-    const value = date.toLocaleDateString('en-GB').split('/').reverse().join('-'); //  20-08-2024
-    return { value, label };
-  };
+    const label = current.toLocaleDateString('en-US', options); 
+    const value = current.toLocaleDateString('en-GB').split('/').reverse().join('-'); 
 
-  const getPreviousFridays = (count) => {
-    const fridays = [];
-    let current = new Date(today);
+    fridays.push({
+      value,
+      label
+    });
 
-    while (fridays.length < count) {
-      current.setDate(current.getDate() - 1);
-      if (current.getDay() === 5) {
-        fridays.unshift(formatDate(new Date(current)));
-      }
-    }
+    current.setDate(current.getDate() + 7);
+  }
 
-    return fridays;
-  };
-
-  const getNextFridays = (count) => {
-    const fridays = [];
-    let current = new Date(today);
-
-    while (fridays.length < count) {
-      current.setDate(current.getDate() + 1);
-      if (current.getDay() === 5) {
-        fridays.push(formatDate(new Date(current)));
-      }
-    }
-
-    return fridays;
-  };
-
-  return {
-    totalFridays: [...getPreviousFridays(numPrevious), ...getNextFridays(numNext)]
-  };
+  return fridays;
 };

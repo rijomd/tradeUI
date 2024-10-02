@@ -6,7 +6,7 @@ import { Typography, Link, useMediaQuery, Backdrop, Grid, Box } from '@mui/mater
 import { PageLoader } from 'components/loader/PageLoader';
 
 
-export const MemorizedPageOutLine = ({ children, isLoading = false, title, actions = [] }) => {
+export const MemorizedPageOutLine = ({ children, isLoading = false, title, actions = [], actionComponent = null }) => {
     const theme = useTheme();
     const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -38,7 +38,7 @@ export const MemorizedPageOutLine = ({ children, isLoading = false, title, actio
                 </Backdrop>
 
                 <Grid container spacing={2} >
-                    {title && <Grid item md={12} xs={12} xl={12} lg={12}  sx={{ alignItems: 'center', boxShadow: "0px 10px 20px 0px #00000040" }}>
+                    {title && <Grid item md={12} xs={12} xl={12} lg={12} sx={{ alignItems: 'center', boxShadow: "0px 10px 20px 0px #00000040" }}>
                         <Grid container spacing={1}
                             sx={{ alignItems: 'center' }}
                         >
@@ -46,6 +46,7 @@ export const MemorizedPageOutLine = ({ children, isLoading = false, title, actio
                                 <Typography variant="h4" align="inherit" sx={{ margin: '4px' }}>{title}</Typography>
                             </Grid>
                             <Grid item md={8} xs={12} sx={{ textAlign: 'end' }}>
+                                {actionComponent && <>{actionComponent}</>}
                                 {/* need to add actions as common */}
                                 {actions?.length > 0 && <></>}
                             </Grid>

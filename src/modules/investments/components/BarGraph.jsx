@@ -16,7 +16,7 @@ export const BarGraph = ({ color }) => {
                 backgroundColor: color,
                 borderColor: color,
                 borderWidth: 1,
-                barThickness: 4,
+                barThickness: 2,
             },
         ],
     };

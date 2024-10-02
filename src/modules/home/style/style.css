@@ -33,7 +33,7 @@
 
 .lottie-content {
   width: 380px;
-  max-width: 100%;
+  max-width: 85%;
   max-height: 100%;
   padding-top: 100px;
 }
@@ -160,7 +160,7 @@
 
 /* changing width od swiper need to change in mobile   npm module*/
 .swiper-slide {
-  margin: 2px 12px;
+  margin: 2px 24px 3px 0px;
 }
 
 .swiper-pagination-bullet-active {

@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Box, Grid } from '@mui/material';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 import { PageOutLine } from 'components/pageOutline/PageOutLine';
-import { PaymentButton } from 'components/formElements/PaymentButton';
-import { monthsArray, yearsArray } from '../config/Constants';
 import { useAlert, useMobile } from 'components/hooks/Hook';
 import { FormButtonField } from 'components/formElements/FormButtonField';
 import { NormalTable } from 'components/Table/Table';
 
 import PaymentIcon from 'assets/icons/Vector.svg';
 import { PaymentScheduler } from '../components/PaymentScheduler';
+import { DateRangePicker } from 'components/formElements/DateRangePicker';
 
 const Payments = () => {
     const [isOenScheduler, setOpenScheduler] = useState(false);
     const xs = useMobile(true);
+    const dateRef = useRef(null);
+
 
     const tableHeader = [
         {
@@ -71,8 +71,8 @@ const Payments = () => {
         profit: 24560
     }
 
-    const checkStatements = (item) => {
-        console.log(item, "item");
+    const checkStatements = (startDate, endDate) => {
+        console.log(startDate, "date", endDate);
     }
 
     const submitSchedule = (item) => {
@@ -84,33 +84,31 @@ const Payments = () => {
         useAlert(a, "theme");
     }
 
+    const search = () => {
+        return <FormButtonField
+            sx={{ textTransform: 'none', marginLeft: !xs && "8px" }}
+            fullWidth={xs ? true : false}
+            onClick={() => { dateRef.current?.onSubmit() }}
+        >
+            Search
+        </FormButtonField>
+    }
+
     return (
-        <PageOutLine title="Payments">
+        <PageOutLine title="Payments" >
             <Grid container spacing={2}>
 
                 <Grid item xl={8} lg={8} md={8} xs={12}>
                     {/* monthly and yearly statements */}
-                    <Box sx={{ display: "flex", justifyContent: xs ? 'center' : 'left' }}>
-                        <PaymentButton
-                            label="Choose Year"
-                            options={yearsArray}
-                            startIcon={xs ? null : <CalendarTodayIcon />}
-                            onClick={checkStatements}
-                            sx={{
-                                background: "#FFD5FA", marginRight: "8px", color: "black",
-                                '&:hover': { color: 'white' }
-                            }} />
-                        <PaymentButton
-                            label="Choose Month"
-                            options={monthsArray}
-                            startIcon={xs ? null : <CalendarTodayIcon />}
-                            onClick={checkStatements}
-                            sx={{
-                                background: "#FFD5FA", color: "black",
-                                '&:hover': { color: 'white' }
-                            }} />
+                    <Box sx={{ display: "flex" }}>
+                        <DateRangePicker ref={dateRef} handleSubmit={checkStatements} />
+                        {!xs && search()}
                     </Box>
+
                 </Grid>
+                {xs && <Grid item xs={12}>
+                    {search()}
+                </Grid>}
 
                 <Grid item xl={4} lg={4} md={4} xs={12} sm={4}>
                     <Box sx={{ display: "flex", justifyContent: 'end', height: "100%" }}>
