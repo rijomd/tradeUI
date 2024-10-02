@@ -41,8 +41,8 @@ export const getFridays = (count) => {
 
   while (fridays.length < count) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const label = current.toLocaleDateString('en-US', options); 
-    const value = current.toLocaleDateString('en-GB').split('/').reverse().join('-'); 
+    const label = current.toLocaleDateString('en-US', options);
+    const value = current.toLocaleDateString('en-GB').split('/').reverse().join('-');
 
     fridays.push({
       value,
@@ -54,3 +54,13 @@ export const getFridays = (count) => {
 
   return fridays;
 };
+
+const colors = [
+  { label: "PENDING", value: "#FE9705" },
+  { label: "REJECTED", value: "#D11313" },
+  { label: "APPROVED", value: "green" },
+];
+
+export const getStatusColors = (status) => {
+  return status ? colors.find(x => x.label === status?.toUpperCase())?.value : "#ccc";
+}

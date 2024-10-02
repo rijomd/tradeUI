@@ -38,6 +38,9 @@ export const BarGraph = ({ color }) => {
                 grid: {
                     display: false,  // Optional: Hide the vertical grid lines
                 },
+                ticks: {
+                    display: false,  // Disable X-axis labels (scores)
+                },
                 barPercentage: 1.0,
                 categoryPercentage: 0.2,
                 offset: true,

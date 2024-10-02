@@ -5,6 +5,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { LogoSection } from '../logoSection';
 import { ProfileSection } from './ProfileSection';
+import { Notification } from './Notification';
 
 export const Header = ({ handleLeftDrawerToggle = () => { } }) => {
     const theme = useTheme();
@@ -41,6 +42,7 @@ export const Header = ({ handleLeftDrawerToggle = () => { } }) => {
                 </ButtonBase>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "end", width: "85%" }}>
+                <Notification />
                 <ProfileSection />
             </Box>
         </>

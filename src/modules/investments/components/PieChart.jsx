@@ -19,6 +19,8 @@ export const PieChart = ({ graphData }) => {
                 data: graphData?.data,
                 backgroundColor: graphData?.backgroundColor,
                 hoverOffset: 4,
+                borderColor: "#1B1B1B",
+                borderWidth: 6
             },
         ],
     };
