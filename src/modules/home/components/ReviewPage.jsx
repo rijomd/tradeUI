@@ -39,7 +39,7 @@ export const ReviewPage = () => {
     const sliders = () => {
         if (isXS) return 1;
         if (isSM) return 2;
-        else return 4;
+        else return 3;
     }
 
     const goToPrevSlide = () => {
@@ -77,39 +77,43 @@ export const ReviewPage = () => {
                 >
                     {reviewData?.length > 0 && reviewData.map((item, key) => {
                         const seeMore = <span style={{ color: theme.palette.secondary[200], cursor: "pointer" }}>... See More</span>;
-                        return <SwiperSlide key={key} onClick={() => { }} className='review-container'>
-                            <Grid container spacing={2} >
-                                <Grid item md={4} xs={4} lg={4} xl={4}>
-                                    {/* <img src={api_Image + item.image} className="slide-image" /> */}
-                                    <img src={item.imageUrl} className="review-image" />
-                                </Grid>
-                                <Grid item md={8} xs={8} lg={8} xl={8}>
-                                    <Box className="review-rating">
-                                        <Typography variant='h5'>{item.name}</Typography>
-                                        <RatingSection value={item.rating} />
-                                    </Box>
-                                </Grid>
-                                <Grid item md={12} xs={12} lg={12} xl={12} >
-                                    <Grid container spacing={2}>
-                                        <Grid item md={12} xs={12} lg={12} xl={12}>
-                                            <Typography variant='body1'>
-                                                {item.review?.length > 350 ? (
-                                                    <>
-                                                        {item.review.substring(0, 500)}
-                                                        {seeMore}
-                                                    </>
-                                                ) : (item.review)}
-                                            </Typography>
+                        return <SwiperSlide key={key} >
+                            <Box onClick={() => { }} className='review-container'>
+                                <Grid container spacing={2} >
+                                    <Grid item md={4} xs={4} lg={4} xl={4}>
+                                        {/* <img src={api_Image + item.image} className="slide-image" /> */}
+                                        <img src={item.imageUrl} className="review-image" />
+                                    </Grid>
+                                    <Grid item md={8} xs={8} lg={8} xl={8}>
+                                        <Box className="review-rating">
+                                            <Typography variant='h5'>{item.name}</Typography>
+                                            <RatingSection value={item.rating} />
+                                        </Box>
+                                    </Grid>
+                                    <Grid item md={12} xs={12} lg={12} xl={12} >
+                                        <Grid container spacing={2}>
+                                            <Grid item md={12} xs={12} lg={12} xl={12}>
+                                                <Box className="content-box">
+                                                    <Typography variant='body1'>
+                                                        {item.review?.length > 350 ? (
+                                                            <>
+                                                                {item.review.substring(0, 350)}
+                                                                {seeMore}
+                                                            </>
+                                                        ) : (item.review)}
+                                                    </Typography>
+                                                </Box>
+                                            </Grid>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                                <Grid item md={12} xs={12} lg={12} xl={12} pb={1}>
-                                    {/* <Box className="review-rating-date">
+                                    <Grid item md={12} xs={12} lg={12} xl={12} pb={1}>
+                                        {/* <Box className="review-rating-date">
                                         <Typography sx={{ color: theme.palette.grey[500] }} variant='subtitle2'>{item.createdDate}</Typography>
                                         <Typography sx={{ color: theme.palette.grey[500] }} variant='subtitle2'>{item.createdTime}</Typography>
                                     </Box> */}
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </Box>
                         </SwiperSlide>
                     })}
                     <Box className="swiper-button-prev">
