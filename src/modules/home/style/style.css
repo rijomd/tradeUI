@@ -287,10 +287,7 @@
 .contact-container .div1 {
   width: 70%;
   height: 482px;
-  background: transparent;
-  backdrop-filter: blur(10px);
   border-radius: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: absolute;
   z-index: 2;
   top: 0;
@@ -298,6 +295,27 @@
   transform: translateY(5%);
   align-items: center;
   display: flex;
+
+  position: relative;
+  box-shadow: none;
+  backdrop-filter: blur(75px);
+}
+
+.contact-container .div1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, rgb(0 0 0), rgba(0, 0, 0, 0) 30%),
+    linear-gradient(263.41deg, rgba(255, 255, 255, 0.14) 5.62%, rgba(195, 0, 171, 0.14) 96.56%),
+    url(/src/assets/images/contactus_background.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  opacity: 0.1;
+  z-index: -1;
 }
 
 .contact-container .div2 {
@@ -405,6 +423,10 @@
     position: relative;
     height: max-content;
     backdrop-filter: none;
+  }
+
+  .contact-container .div1::before {
+    background-image: none;
   }
 }
 

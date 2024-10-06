@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import logo from "assets/images/aboutLogo.jpg";
+import logo from "assets/images/aboutLogo.png";
 import contactImage from "assets/images/contactusFull.jpeg";
 import { contactUSAction } from '../reducer/HomeAction';
 import { ContactUsForm } from '../forms/ContactUsForm';

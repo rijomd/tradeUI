@@ -5,12 +5,14 @@ import { TextField, Box } from '@mui/material';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import dayjs from 'dayjs';
 
 export const DateRangePicker = forwardRef(({ handleSubmit = () => { } }, ref) => {
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const buttonRef = useRef(null);
+    const today = dayjs();
 
     useImperativeHandle(ref, () => ({
         onSubmit: () => { buttonRef.current.click(); },
@@ -18,25 +20,53 @@ export const DateRangePicker = forwardRef(({ handleSubmit = () => { } }, ref) =>
 
     return (
         <>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
                         label="Start Date"
                         value={startDate}
+                        maxDate={today}
+                        size="small"
                         onChange={(newValue) => setStartDate(newValue)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} size="small"
+                            sx={{
+                                '& .MuiInputBase-root': {
+                                    padding: '6px 10px', // Reducing padding to shrink the input height
+                                },
+                                '& .MuiSvgIcon-root': {
+                                    fontSize: '1.2rem', // Shrinking the icon size
+                                },
+                                '& .MuiInputLabel-root': {
+                                    fontSize: '0.875rem', // Small font for label
+                                },
+                            }}
+                        />}
                     />
                     <Box sx={{ mx: 2 }}> to </Box>
                     <DatePicker
+                        size="small"
                         label="End Date"
                         value={endDate}
                         minDate={startDate}
+                        maxDate={today}
                         onChange={(newValue) => setEndDate(newValue)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField  {...params} size="small"
+                            sx={{
+                                '& .MuiInputBase-root': {
+                                    padding: '6px 10px', // Reducing padding to shrink the input height
+                                },
+                                '& .MuiSvgIcon-root': {
+                                    fontSize: '1.2rem', // Shrinking the icon size
+                                },
+                                '& .MuiInputLabel-root': {
+                                    fontSize: '0.875rem', // Small font for label
+                                },
+                            }}
+                        />}
                     />
-                </Box>
-                <button ref={buttonRef} style={{ display: "none" }} onClick={() => { handleSubmit(startDate, endDate); }} >Ok</button>
-            </LocalizationProvider>
+                    <button ref={buttonRef} style={{ display: "none" }} onClick={() => { handleSubmit(dayjs(startDate).format("DD/MM/YYYY"), dayjs(endDate).format("DD/MM/YYYY")); }} >Ok</button>
+                </LocalizationProvider>
+            </Box>
         </>
     )
 });

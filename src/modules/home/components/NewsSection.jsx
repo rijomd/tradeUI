@@ -43,7 +43,7 @@ export const NewsSection = ({ }) => {
                         >
                             {newsData?.length > 0 && newsData.map((item, key) => {
                                 return <SwiperSlide key={key} onClick={() => { }} className='news-letter-container'>
-                                    <NewsFeed item={item} handleSubmit={handleSubmit} />
+                                    <NewsFeed item={item} handleSubmit={handleSubmit} characters={500} />
                                 </SwiperSlide>
                             })}
                         </Swiper>

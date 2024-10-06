@@ -21,6 +21,11 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
   const location = useLocation();
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
 
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  }
+
   const menuList = () => {
     return <List>
       {MenuItems.map((item, index) => {
@@ -54,7 +59,7 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
 
   const footerSection = () => {
     return (<Box className="footer-section">
-      <Box className="logout-section" sx={{ background: "#FFFFFF1A" }}>
+      <Box className="logout-section" sx={{ background: "#FFFFFF1A" }} onClick={logOut}>
         <img src={LogoutIcon} />
         <Typography variant='body1' pl={.5}>Log Out</Typography>
       </Box>

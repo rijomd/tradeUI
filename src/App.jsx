@@ -58,7 +58,7 @@ function App() {
     <BrowserRouter>
       <ToastContainer
         position="top-right"
-        autoClose={8000}
+        autoClose={6000}
         draggable
         pauseOnHover
         theme="dark"

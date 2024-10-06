@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { FormButtonField } from 'components/formElements/FormButtonField';
 
-export const NewsFeed = ({ item = {}, handleSubmit, isHideButton }) => {
+export const NewsFeed = ({ item = {}, handleSubmit, isHideButton, characters = 100 }) => {
     const theme = useTheme();
     const seeMore = <span style={{ color: theme.palette.secondary[200], cursor: "pointer" }}>... See More</span>;
 
@@ -22,9 +22,9 @@ export const NewsFeed = ({ item = {}, handleSubmit, isHideButton }) => {
                 </Typography>
                 <Box className="news-letter-content">
                     <Typography variant='body1'>
-                        {item?.content?.length > 250 ? (
+                        {item?.content?.length > characters ? (
                             <>
-                                {item?.content.substring(0, 250)}
+                                {item?.content.substring(0, characters)}
                                 {seeMore}
                             </>
                         ) : (item.content)}

@@ -4,14 +4,15 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { Pagination, Paper, Stack, Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const StyledTableCell = styled(TableCell)(({ theme, headerStyle }) => ({
 
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: "#363636",
         color: theme.palette.common.white,
         border: 0,
         padding: "4px",
-        height: "35px"
+        height: "35px",
+        ...headerStyle
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -40,7 +41,7 @@ export const NormalTable = ({ tableHeader = [], tableData = [], page = 1, totalD
                 <TableHead>
                     <TableRow>
                         {tableHeader.map((item, index) => {
-                            return <StyledTableCell key={index} >{item?.label}</StyledTableCell>
+                            return <StyledTableCell key={index} style={item?.headerStyle}>{item?.label}</StyledTableCell>
                         })}
                     </TableRow>
                 </TableHead>
@@ -66,7 +67,7 @@ export const NormalTable = ({ tableHeader = [], tableData = [], page = 1, totalD
                 </TableBody>
             </Table>
             {totalData > 10 && <Stack spacing={2} pt={2} pb={2} >
-                <Pagination sx={{ justifyContent: 'center', display: 'flex' }} count={(totalData / 10) - 1} page={page} onChange={handleChange} variant="text" color="secondary" shape="rounded" />
+                <Pagination sx={{ justifyContent: 'right', display: 'flex' }} count={(totalData / 10) - 1} page={page} onChange={handleChange} variant="text" color="secondary" shape="rounded" />
             </Stack>}
         </TableContainer>
     );

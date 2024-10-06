@@ -78,8 +78,16 @@ const DashBoard = ({ }) => {
                 <Grid container spacing={2}>
                     <Grid item md={12} lg={12} xl={12} xs={12} >
                         <Box className="tab-container">
-                            <button style={{ background: tab === "nifty" && "#FFD5FA", color: tab === "nifty" && "black" }} onClick={() => { handleSubmit("nifty") }}>Nifty 50</button>
-                            <button style={{ background: tab === "bank_nifty" && "#FFD5FA", color: tab === "bank_nifty" && "black" }} onClick={() => { handleSubmit("bank_nifty") }}>Bank Nifty</button>
+                            <button
+                                style={{ background: tab === "nifty" && "#FFD5FA", color: tab === "nifty" && "black" }}
+                                onClick={() => { handleSubmit("nifty") }}>
+                                Nifty 50
+                            </button>
+                            <button
+                                style={{ background: tab === "bank_nifty" && "#FFD5FA", color: tab === "bank_nifty" && "black" }}
+                                onClick={() => { handleSubmit("bank_nifty") }}>
+                                Bank Nifty
+                            </button>
                         </Box>
                     </Grid>
                     <Grid item md={12} lg={12} xl={12} xs={12} >

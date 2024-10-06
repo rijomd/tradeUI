@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Box, Grid, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import { FormButtonField } from 'components/formElements/FormButtonField';
 import { LoginForm } from '../forms/LoginForm';
-import { loginAction } from '../reducer/AuthAction';
+import {  loginAction } from '../reducer/AuthAction';
 
 import image from "assets/images/loginImage.jpeg";
 import '../style/style.css';
@@ -12,11 +13,17 @@ import '../style/style.css';
 const Login = ({ }) => {
     const formRef = useRef(null);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleSubmit = (data) => {
-        console.log(data,"data");
-        
-        dispatch(loginAction(data));
+    const handleSubmit = async (data) => {
+        try {
+            dispatch(loginAction(data));
+            setTimeout(() => {
+                navigate('/dashboard');
+            }, 1000);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (

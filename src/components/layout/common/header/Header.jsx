@@ -6,9 +6,11 @@ import { useTheme } from '@mui/material/styles';
 import { LogoSection } from '../logoSection';
 import { ProfileSection } from './ProfileSection';
 import { Notification } from './Notification';
+import { useMobile } from 'components/hooks/Hook';
 
 export const Header = ({ handleLeftDrawerToggle = () => { } }) => {
     const theme = useTheme();
+    const md = useMobile();
 
     return (
         <>
@@ -29,10 +31,7 @@ export const Header = ({ handleLeftDrawerToggle = () => { } }) => {
                             transition: 'all .2s ease-in-out',
                             background: theme.palette.secondary.light,
                             color: theme.palette.secondary.dark,
-                            '&:hover': {
-                                background: theme.palette.secondary.dark,
-                                color: theme.palette.secondary.light
-                            }
+                            display: md ? "flex" : "none"
                         }}
                         onClick={handleLeftDrawerToggle}
                         color="inherit"

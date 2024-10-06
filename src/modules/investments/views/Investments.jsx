@@ -139,7 +139,7 @@ const Investments = () => {
                     <Grid item md={4} lg={4} xl={4} xs={12} sm={4}>
                         <Box className='news-letter-container' p={2} sx={{ boxShadow: "0px 10px 20px 0px #00000040", background: "#181818" }}>
                             <Typography variant='h5' pb={2}>Did you know ?.</Typography>
-                            <NewsFeed item={newsData} isHideButton />
+                            <NewsFeed item={newsData} isHideButton characters={75} />
                         </Box>
                     </Grid>
 

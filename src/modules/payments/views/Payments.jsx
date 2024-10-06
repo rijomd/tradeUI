@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Box, Grid } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 import { PageOutLine } from 'components/pageOutline/PageOutLine';
 import { useAlert, useMobile } from 'components/hooks/Hook';
@@ -23,46 +24,34 @@ const Payments = () => {
             renderComponent: (item) => {
                 console.log(item);
             },
-            type: "text"
+            type: "text",
+            headerStyle: { width: "15%" }
         },
         {
             name: "company",
             label: "Company",
-            type: "text"
+            type: "text",
+            headerStyle: { width: "60%" }
         },
         {
             name: "cmp",
             label: "CMP Rs",
-            type: "text"
-        },
-        {
-            name: "pe",
-            label: "P/E",
-            type: "text"
-        },
-        {
-            name: "charges",
-            label: "Charges",
-            type: "text"
-        },
-        {
-            name: "value",
-            label: "UnRealized",
-            type: "text"
-        },
+            type: "text",
+            headerStyle: { width: "25%" }
+        }
     ];
 
     const tableData = [
-        { slNo: "1", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "2", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "3", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "4", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "5", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "6", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "7", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "8", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "9", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "10", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
+        { slNo: "1", company: "company", cmp: "short code" },
+        { slNo: "2", company: "company", cmp: "short code" },
+        { slNo: "3", company: "company", cmp: "short code" },
+        { slNo: "4", company: "company", cmp: "short code" },
+        { slNo: "5", company: "company", cmp: "short code" },
+        { slNo: "6", company: "company", cmp: "short code" },
+        { slNo: "7", company: "company", cmp: "short code" },
+        { slNo: "8", company: "company", cmp: "short code" },
+        { slNo: "9", company: "company", cmp: "short code" },
+        { slNo: "10", company: "company", cmp: "short code" }
     ];
 
     const paymentData = {
@@ -90,7 +79,7 @@ const Payments = () => {
             fullWidth={xs ? true : false}
             onClick={() => { dateRef.current?.onSubmit() }}
         >
-            Search
+            {xs ? "Search" : <SearchIcon />}
         </FormButtonField>
     }
 
@@ -111,7 +100,7 @@ const Payments = () => {
                 </Grid>}
 
                 <Grid item xl={4} lg={4} md={4} xs={12} sm={4}>
-                    <Box sx={{ display: "flex", justifyContent: 'end', height: "100%" }}>
+                    <Box sx={{ display: "flex", justifyContent: 'end', alignItems: "center", height: "100%" }}>
                         <FormButtonField
                             sx={{ textTransform: 'none' }}
                             fullWidth={xs ? true : false}

@@ -47,7 +47,7 @@ export const PieChart = ({ graphData }) => {
             <Box sx={{ width: isMobile ? "100%" : "80%" }} mt={3}>
                 {graphData?.labels.map((label, index) => (
                     <Box key={index} sx={{ backgroundColor: "#1B1B1B", padding: "2px" }}>
-                        <Grid container sx={{ backgroundColor: "#323232", margin: 0, padding: "8px" }}>
+                        <Grid container sx={{ backgroundColor: "#323232", margin: 0, padding: "8px", borderRadius: "8px" }}>
                             <Grid item md={3} lg={3} xs={3}>
                                 <p
                                     style={{

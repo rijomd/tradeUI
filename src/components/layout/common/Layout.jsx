@@ -46,7 +46,7 @@ const MainStyled = styled('main', { shouldForwardProp: (prop) => prop !== 'open'
 
 const Layout = () => {
     const theme = useTheme();
-    const [leftDrawerOpened, setLeftDrawerOpened] = useState(false);
+    const [leftDrawerOpened, setLeftDrawerOpened] = useState(true);
     const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
     const divRef = useRef(null);
     const [divHeight, setDivHeight] = useState(0);

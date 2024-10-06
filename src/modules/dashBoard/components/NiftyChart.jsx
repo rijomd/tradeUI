@@ -27,7 +27,7 @@ const NiftyChart = () => {
                     color: "#2A2A2A"
                 },
             },
-            height: 400,
+            height: 300,
         };
 
         chartRef.current = createChart(chartContainerRef.current, chartOptions);

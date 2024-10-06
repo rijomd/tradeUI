@@ -32,7 +32,7 @@ export const PaymentScheduler = ({ open = false, handleClose = () => { }, paymen
         height: '60px',
         cursor: "pointer",
         '&:hover': {
-            backgroundColor: theme.palette.background.default,
+            backgroundColor: !xs ? theme.palette.background.default : "",
         },
     };
 
@@ -70,14 +70,12 @@ export const PaymentScheduler = ({ open = false, handleClose = () => { }, paymen
 
                         <Box p={2} sx={detailsStyle}>
                             <Box sx={{ display: 'flex', flexDirection: "column", }}>
-                                <Typography pb={1} sx={{ color: "#FFFFFFB2" }} variant='body' >Growwise Id</Typography>
                                 <Typography pb={1} sx={{ color: "#FFFFFFB2" }} variant='body' >Name</Typography>
-                                <Typography sx={{ color: "#FFFFFFB2" }} variant='body' >Profit Amount</Typography>
+                                <Typography pb={1} sx={{ color: "#FFFFFFB2" }} variant='body' >Growwise Id</Typography>
                             </Box>
                             <Box sx={{ display: 'flex', flexDirection: "column", }}>
                                 <Typography pb={1} variant='body'>{paymentData?.name}</Typography>
                                 <Typography pb={1} variant='body'>{paymentData?.growWiseId}</Typography>
-                                <Typography variant='body' sx={{ color: "#91A416" }} >{paymentData?.profit}</Typography>
                             </Box>
                         </Box>
                     </Grid>

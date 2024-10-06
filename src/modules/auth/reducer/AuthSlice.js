@@ -8,6 +8,7 @@ const initialState = {
   auth: false,
   status: "idle",
   error: null,
+  authComponents: []
 };
 
 export const authSlice = createSlice({
@@ -26,7 +27,7 @@ export const authSlice = createSlice({
     builder.addCase(loginAction.fulfilled, (state, action) => {
       state.status = "success";
       state.auth = true;
-      state.error = successMessage;
+      state.error = successMessage || action.payload?.message;
     });
     builder.addCase(loginAction.rejected, (state, action) => {
       state.status = "failed";
@@ -44,6 +45,7 @@ export const authSlice = createSlice({
       state.status = "failed";
       state.error = action.payload || errorMessage;
     });
+
   },
 });
 
