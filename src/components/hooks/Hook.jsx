@@ -1,5 +1,6 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 import "../style/hookStyle.css";
 
@@ -63,4 +64,17 @@ const colors = [
 
 export const getStatusColors = (status) => {
   return status ? colors.find(x => x.label === status?.toUpperCase())?.value : "#ccc";
+}
+
+export const usePageDirection = () => {
+  const navigate = useNavigate();
+  return (page) => {
+    navigate(page);
+  };
+}
+
+export const matchItemOfTwoArray = (firstMatchingItem, secondMatchingItem, firstArray, secondArray) => {
+  return firstArray.filter(firstItem =>
+    secondArray.some(secondItem => secondItem?.[secondMatchingItem] === firstItem?.[firstMatchingItem])
+  );
 }

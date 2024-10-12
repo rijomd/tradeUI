@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useTheme } from '@mui/material/styles';
 import { Box, Chip, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Typography, useMediaQuery } from '@mui/material';
@@ -10,52 +11,62 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { LogoSection } from '../logoSection';
 import { REACT_APP_VERSION } from 'service/AuthConstants';
 import { DrawerWidthCommon } from 'themes/constants/ThemeConstants';
-import { MenuItems } from 'routes/SideMenuItems';
+import { logOutAction } from 'modules/auth/reducer/AuthSlice';
 
 import LogoutIcon from 'assets/icons/logout.svg';
-
+import { getAuthSideBars } from 'service/AuthMethods';
 
 export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window }) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
+  const authSlice = useSelector((state) => state.auth);
 
   const logOut = () => {
     localStorage.clear();
-    navigate("/login");
+    dispatch(logOutAction());
+    setTimeout(() => {
+      navigate("/login");
+    }, 600);
   }
 
-  const menuList = () => {
-    return <List>
-      {MenuItems.map((item, index) => {
-        const selected = location.pathname?.toLocaleLowerCase() === item.path?.toLocaleLowerCase();
-        return <ListItemButton
-          key={index}
-          disabled={item.disabled}
-          sx={{
-            borderRadius: '8px',
-            mb: 0.5,
-            alignItems: 'flex-start',
-            backgroundColor: 'inherit',
-            py: 1,
-            pl: `24px`
-          }}
-          selected={selected}
-          onClick={() => navigate(item?.path)}
-        >
-          <ListItemIcon sx={{ my: 'auto', minWidth: 18, paddingRight: 1 }}>  <img src={item.icon} />  </ListItemIcon>
-          <ListItemText
-            primary={
-              <Typography variant={'body1'} color="inherit">
-                {item?.menuName}
-              </Typography>
-            }
-          />
-        </ListItemButton>
-      })}
-    </List>
-  }
+  const menuList = React.useMemo(() => (<List>
+    {getAuthSideBars() === 0 && <ListItemText
+      primary={
+        <Typography variant={'body1'} color="inherit" sx={{ textAlign: "center" }}>
+          No menus found
+        </Typography>
+      }
+    />}
+    {getAuthSideBars()?.map((item, index) => {
+      const selected = location.pathname?.toLocaleLowerCase() === item.path?.toLocaleLowerCase();
+      return <ListItemButton
+        key={index}
+        disabled={item.disabled}
+        sx={{
+          borderRadius: '8px',
+          mb: 0.5,
+          alignItems: 'flex-start',
+          backgroundColor: 'inherit',
+          py: 1,
+          pl: `24px`
+        }}
+        selected={selected}
+        onClick={() => navigate(item?.path)}
+      >
+        <ListItemIcon sx={{ my: 'auto', minWidth: 18, paddingRight: 1 }}>  <img src={item.icon} />  </ListItemIcon>
+        <ListItemText
+          primary={
+            <Typography variant={'body1'} color="inherit">
+              {item?.menuName}
+            </Typography>
+          }
+        />
+      </ListItemButton>
+    })}
+  </List>), [authSlice.auth])
 
   const footerSection = () => {
     return (<Box className="footer-section">
@@ -85,13 +96,13 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
             paddingRight: '16px'
           }}
         >
-          {menuList()}
+          {menuList}
           {footerSection()}
         </PerfectScrollbar>
       </BrowserView>
       <MobileView>
         <Box sx={{ px: 2 }}>
-          {menuList()}
+          {menuList}
           {footerSection()}
         </Box>
       </MobileView>

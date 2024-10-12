@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { Box, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { Box, Grid, Typography } from '@mui/material';
 
 import { FormButtonField } from 'components/formElements/FormButtonField';
 import { LoginForm } from '../forms/LoginForm';
-import {  loginAction } from '../reducer/AuthAction';
+import { loginAction } from '../reducer/AuthAction';
 
 import image from "assets/images/loginImage.jpeg";
 import '../style/style.css';
@@ -17,10 +17,7 @@ const Login = ({ }) => {
 
     const handleSubmit = async (data) => {
         try {
-            dispatch(loginAction(data));
-            setTimeout(() => {
-                navigate('/dashboard');
-            }, 1000);
+            dispatch(loginAction({ data, navigate }));
         } catch (error) {
             console.error(error);
         }

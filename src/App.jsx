@@ -7,25 +7,43 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from "@mui/material";
 
 import { PageRouter } from "routes/PageRouter";
-import { getAuthToken } from "service/AuthMethods";
 
 import { HomeLayout } from 'components/layout';
 import { LazyLoader } from "components/loader/LazyLoader";
 import { ErrorNotFound } from 'components/error/ErrorNotFound';
+import ErrorAuthorization from "components/error/ErrorAuthorization";
 
 import Themes from "themes/components/Theme";
+import { getAuthRouters, getAuthToken } from "service/AuthMethods";
 
 function App() {
   const theme = useSelector((state) => state.theme);
+
   const HomePage = lazy(() => import("modules/home/views/HomePage"));
   const Layout = lazy(() => import("components/layout/common/Layout.jsx"));
 
   const privateRoute = (Component, auth) => {
     if (auth) {
-      const data = getAuthToken();
-      // need to add 403 condition from page list if components not exist 
-      if (data) { return <Component />; }
-      else { return <Navigate to={`/login`} />; }
+      const authToken = getAuthToken();
+      const currentPath = window?.location?.pathname;
+      if (authToken) {
+        const menus = getAuthRouters() || [];
+        const verifiedAuthComp = menus.filter(x => x.path === currentPath);
+        // need to add 403 condition from page list if components not exist 
+        // need to check health check if
+        if (verifiedAuthComp?.length > 0) {
+          return <Component />;
+        }
+        else {
+          return <ErrorAuthorization />;
+        }
+      }
+      else {
+        if (currentPath === '/login') {
+          return null;
+        }
+        return <Navigate to={`/login`} />;
+      }
     }
     return <Component />;
   };

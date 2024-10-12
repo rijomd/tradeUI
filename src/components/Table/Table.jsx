@@ -67,7 +67,7 @@ export const NormalTable = ({ tableHeader = [], tableData = [], page = 1, totalD
                 </TableBody>
             </Table>
             {totalData > 10 && <Stack spacing={2} pt={2} pb={2} >
-                <Pagination sx={{ justifyContent: 'right', display: 'flex' }} count={(totalData / 10) - 1} page={page} onChange={handleChange} variant="text" color="secondary" shape="rounded" />
+                <Pagination sx={{ justifyContent: 'right', display: 'flex' }} count={Math.ceil(totalData / 10)} page={page} onChange={handleChange} variant="text" color="secondary" shape="rounded" />
             </Stack>}
         </TableContainer>
     );

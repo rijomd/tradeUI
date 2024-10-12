@@ -6,20 +6,20 @@ import PaymentsIcon from 'assets/icons/Payments.svg';
 
 export const MenuItems = [
     {
-        name: "dashBoard",
+        name: "DashBoard",
         menuName: "Home",
         icon: HomeIcon,
         path: "/dashBoard",
         disabled: false
     },
     {
-        name: "investments",
+        name: "Investments",
         menuName: "Investments",
         icon: InvestmentsIcon,
         path: "/investments"
     },
     {
-        name: "payments",
+        name: "Payments",
         menuName: "Payments",
         icon: PaymentsIcon,
         path: "/payments"

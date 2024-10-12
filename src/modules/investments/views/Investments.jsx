@@ -1,38 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PageOutLine } from 'components/pageOutline/PageOutLine';
 import { InvestmentDetail } from '../components/InvestmentDetail';
 import { PieChart } from '../components/PieChart';
+import { investmentsUserAction, investmentsUserDEtailsAction } from '../reducer/InvestmentsAction';
 
 import { NormalTable } from 'components/Table/Table';
 import { NewsFeed } from 'modules/home/components/NewsFeed';
 import news from "assets/images/newsletter.jpg"
+import { getAuthUser } from 'service/AuthMethods';
 
 import "../style/style.css";
 
 const Investments = () => {
 
-    const investmentsDetails = [
-        {
-            amount: 180000,
-            name: "Total Investments",
-            color: "#C200AB"
-        },
-        {
-            amount: 280000,
-            name: "Current Value",
-            color: "#118FA8"
+    const dispatch = useDispatch();
+    const user = getAuthUser();
+    const investment = useSelector((state) => state.investments);
 
-        },
-        {
-            amount: 100000,
-            name: "Unrealized P & L",
-            isProfitOrLose: "profit",
-            color: "#047400"
-            // color: "red"
-        }
-    ];
+    useEffect(() => {
+        dispatch(investmentsUserAction(user?.id || 1));
+        dispatch(investmentsUserDEtailsAction(user?.id || 1));
+    }, []);
 
     const investmentGraphData = [
         {
@@ -62,46 +53,34 @@ const Investments = () => {
             renderComponent: (item) => {
                 console.log(item);
             },
-            type: "text"
+            type: "text",
+            headerStyle: { width: "15%" }
         },
         {
             name: "company",
             label: "Company",
-            type: "text"
+            type: "text",
+            headerStyle: { width: "60%" }
         },
         {
             name: "cmp",
             label: "CMP Rs",
-            type: "text"
-        },
-        {
-            name: "pe",
-            label: "P/E",
-            type: "text"
-        },
-        {
-            name: "charges",
-            label: "Charges",
-            type: "text"
-        },
-        {
-            name: "value",
-            label: "UnRealized",
-            type: "text"
-        },
+            type: "text",
+            headerStyle: { width: "25%" }
+        }
     ];
 
     const tableData = [
-        { slNo: "1", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "2", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "3", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "4", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "5", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "6", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "7", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "8", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "9", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
-        { slNo: "10", company: "company", cmp: "short code", pe: "P", charges: "charges", value: "Profit" },
+        { slNo: "1", company: "company", cmp: "short code" },
+        { slNo: "2", company: "company", cmp: "short code" },
+        { slNo: "3", company: "company", cmp: "short code" },
+        { slNo: "4", company: "company", cmp: "short code" },
+        { slNo: "5", company: "company", cmp: "short code" },
+        { slNo: "6", company: "company", cmp: "short code" },
+        { slNo: "7", company: "company", cmp: "short code" },
+        { slNo: "8", company: "company", cmp: "short code" },
+        { slNo: "9", company: "company", cmp: "short code" },
+        { slNo: "10", company: "company", cmp: "short code" }
     ];
 
     const newsData = {
@@ -120,7 +99,7 @@ const Investments = () => {
             <PageOutLine title="Investments">
                 <Grid container spacing={2} pt={2}>
 
-                    {investmentsDetails.map((item, index) => {
+                    {investment?.investmentsDetails.map((item, index) => {
                         return <Grid key={index} item md={4} lg={4} xl={4} xs={12} sm={4}>
                             <InvestmentDetail investmentsDetail={item} />
                         </Grid>
@@ -133,7 +112,7 @@ const Investments = () => {
                     })}
 
                     <Grid item md={8} lg={8} xl={8} xs={12} sm={8}>
-                        <NormalTable tableHeader={tableHeader} tableData={tableData} />
+                        <NormalTable tableHeader={tableHeader} tableData={tableData} totalData={10} />
                     </Grid>
 
                     <Grid item md={4} lg={4} xl={4} xs={12} sm={4}>

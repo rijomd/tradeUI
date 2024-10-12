@@ -1,7 +1,7 @@
 export const PageRouter = [
     {
         name: "DashBoard",
-        auth: false,
+        auth: true,
         moduleName: "dashBoard",
         viewName: "DashBoard",
         layoutName: "common",
@@ -9,7 +9,7 @@ export const PageRouter = [
     },
     {
         name: "Investments",
-        auth: false,
+        auth: true,
         moduleName: "investments",
         viewName: "Investments",
         layoutName: "common",
@@ -17,7 +17,7 @@ export const PageRouter = [
     },
     {
         name: "Payments",
-        auth: false,
+        auth: true,
         moduleName: "payments",
         viewName: "Payments",
         layoutName: "common",

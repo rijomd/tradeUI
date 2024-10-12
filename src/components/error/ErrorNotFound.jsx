@@ -1,9 +1,10 @@
+import React from 'react';
 import { styled } from '@mui/material/styles';
 import Image from 'assets/images/404.png';
 
 export const ErrorNotFound = () => {
 
-    const PageWrapper = styled('div')(({ theme }) => ({
+    const PageWrapper = styled('div')(({ }) => ({
         height: 'calc(100vh - 100px)',
         position: 'relative',
         overflow: 'hidden',
