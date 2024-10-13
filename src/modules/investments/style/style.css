@@ -89,7 +89,7 @@ p {
 .calculator button {
     width: 60px;
     height: 60px;
-    font-size: 18px;
+    font-size: 14px;
     border: none;
     cursor: pointer;
     background: #777677;
@@ -106,6 +106,10 @@ p {
     margin-bottom: 1px;
     border-radius: 2px;
     background: #323232;
+}
+
+.button-end-row {
+    background: #C300AB !important;
 }
 
 @media (max-width: 600px) {

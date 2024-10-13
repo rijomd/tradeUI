@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Tooltip } from '@mui/material';
+import { Box, Tooltip, Typography } from '@mui/material';
 
 import CalcIcon from 'assets/icons/calculator.svg';
 
@@ -11,10 +11,14 @@ export const Calculator = () => {
         if (val === 'C') {
             setValue('');
         } else if (val === '=') {
-            try {
-                setValue(eval(value));
-            } catch {
-                setValue('Error');
+            if (value >= 100000) {
+                setValue(`₹${value * 0.02} to ₹${value * 0.04}`);
+            }
+            else if (30000 <= value >= 50000) {
+                setValue(`${value * 0.05} to ${value * 0.06}`);
+            }
+            else {
+                setValue(`Amount is not in our criteria`);
             }
         } else {
             setValue(value + val);
@@ -23,38 +27,33 @@ export const Calculator = () => {
 
     return (
         <>
-            <Tooltip title={"Show calculator"}>
+            <Tooltip title={showCalculator ? "Close calculator" : "Show calculator"}>
                 <button className="fixed-button" onClick={() => setShowCalculator(!showCalculator)}>
                     <img src={CalcIcon} />
                 </button >
             </Tooltip>
 
             <Box className={`calculator ${showCalculator ? 'show' : ''}`}>
+                <Typography variant='h5' sx={{ textAlign: "center" }} m={.5}>Profit Calculator</Typography>
                 <input type="text" value={value} readOnly />
 
-                <Box className="button-row">
+                <Box >
                     <button onClick={() => handleButtonClick('1')}>1</button>
                     <button onClick={() => handleButtonClick('2')}>2</button>
                     <button onClick={() => handleButtonClick('3')}>3</button>
-                    <button onClick={() => handleButtonClick('+')}>+</button>
+                    <button className="button-end-row" onClick={() => handleButtonClick('=')}>Show</button>
                 </Box>
-                <Box className="button-row">
+                <Box >
                     <button onClick={() => handleButtonClick('4')}>4</button>
                     <button onClick={() => handleButtonClick('5')}>5</button>
                     <button onClick={() => handleButtonClick('6')}>6</button>
-                    <button onClick={() => handleButtonClick('-')}>-</button>
+                    <button onClick={() => handleButtonClick('0')}>0</button>
                 </Box>
-                <Box className="button-row">
+                <Box >
                     <button onClick={() => handleButtonClick('7')}>7</button>
                     <button onClick={() => handleButtonClick('8')}>8</button>
                     <button onClick={() => handleButtonClick('9')}>9</button>
-                    <button onClick={() => handleButtonClick('*')}>*</button>
-                </Box>
-                <Box className="button-row">
                     <button onClick={() => handleButtonClick('C')}>AC</button>
-                    <button onClick={() => handleButtonClick('0')}>0</button>
-                    <button onClick={() => handleButtonClick('=')}>=</button>
-                    <button onClick={() => handleButtonClick('/')}>/</button>
                 </Box>
             </Box>
 
