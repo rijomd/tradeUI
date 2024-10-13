@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PageOutLine } from 'components/pageOutline/PageOutLine';
 import { InvestmentDetail } from '../components/InvestmentDetail';
 import { PieChart } from '../components/PieChart';
-import { investmentsUserAction, investmentsUserDEtailsAction } from '../reducer/InvestmentsAction';
+import { investmentsUserDEtailsAction } from '../reducer/InvestmentsAction';
+import { Calculator } from '../components/Calculator';
 
 import { NormalTable } from 'components/Table/Table';
 import { NewsFeed } from 'modules/home/components/NewsFeed';
@@ -17,70 +18,34 @@ import "../style/style.css";
 const Investments = () => {
 
     const dispatch = useDispatch();
-    const user = getAuthUser();
     const investment = useSelector((state) => state.investments);
 
     useEffect(() => {
-        dispatch(investmentsUserAction(user?.id || 1));
-        dispatch(investmentsUserDEtailsAction(user?.id || 1));
-    }, []);
-
-    const investmentGraphData = [
-        {
-            title: "Amount",
-            labels: ['Red', 'Blue', 'Green'],
-            backgroundColor: ["#A1008E", "#1AA6C2", "#047400"],
-            data: [300, 50, 100],
-        },
-        {
-            title: "Sectors",
-            labels: ['Red', 'Blue', 'Green'],
-            backgroundColor: ["#A1008E", "#1AA6C2", "#047400"],
-            data: [300, 50, 100],
-        },
-        {
-            title: "Stocks",
-            labels: ['Red', 'Blue', 'Green'],
-            backgroundColor: ["#A1008E", "#1AA6C2", "#047400"],
-            data: [300, 50, 100],
+        const user = getAuthUser();
+        if (user?.user_id) {
+            dispatch(investmentsUserDEtailsAction(user?.user_id));
         }
-    ];
+    }, []);
 
     const tableHeader = [
         {
             name: "slNo",
             label: "Sl No",
-            renderComponent: (item) => {
-                console.log(item);
-            },
-            type: "text",
+            type: "index",
             headerStyle: { width: "15%" }
         },
         {
-            name: "company",
+            name: "companyName",
             label: "Company",
             type: "text",
             headerStyle: { width: "60%" }
         },
         {
-            name: "cmp",
+            name: "investedAmount",
             label: "CMP Rs",
             type: "text",
             headerStyle: { width: "25%" }
         }
-    ];
-
-    const tableData = [
-        { slNo: "1", company: "company", cmp: "short code" },
-        { slNo: "2", company: "company", cmp: "short code" },
-        { slNo: "3", company: "company", cmp: "short code" },
-        { slNo: "4", company: "company", cmp: "short code" },
-        { slNo: "5", company: "company", cmp: "short code" },
-        { slNo: "6", company: "company", cmp: "short code" },
-        { slNo: "7", company: "company", cmp: "short code" },
-        { slNo: "8", company: "company", cmp: "short code" },
-        { slNo: "9", company: "company", cmp: "short code" },
-        { slNo: "10", company: "company", cmp: "short code" }
     ];
 
     const newsData = {
@@ -105,14 +70,14 @@ const Investments = () => {
                         </Grid>
                     })}
 
-                    {investmentGraphData.map((item, index) => {
+                    {investment?.investmentGraphData.map((item, index) => {
                         return <Grid key={index} item md={4} lg={4} xl={4} xs={12} sm={4}>
                             <PieChart graphData={item} />
                         </Grid>
                     })}
 
                     <Grid item md={8} lg={8} xl={8} xs={12} sm={8}>
-                        <NormalTable tableHeader={tableHeader} tableData={tableData} totalData={10} />
+                        <NormalTable tableHeader={tableHeader} tableData={investment?.investmentList} totalData={10} />
                     </Grid>
 
                     <Grid item md={4} lg={4} xl={4} xs={12} sm={4}>
@@ -122,6 +87,7 @@ const Investments = () => {
                         </Box>
                     </Grid>
 
+                    <Calculator />
                 </Grid>
             </PageOutLine>
         </>

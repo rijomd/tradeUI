@@ -66,7 +66,7 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
         />
       </ListItemButton>
     })}
-  </List>), [authSlice.auth])
+  </List>), [authSlice.auth, location.pathname])
 
   const footerSection = () => {
     return (<Box className="footer-section">

@@ -4,6 +4,7 @@ import axios from "service/Request";
 import { investmentsUserDetailsUrl, investmentsUserUrl } from "../config/Constants";
 import { useAlert } from "components/hooks/Hook";
 
+// this for admin side
 export const investmentsUserAction = createAsyncThunk(
     "investment/investmentsUserAction",
     async (id, thunkAPI) => {

@@ -10,8 +10,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const PieChart = ({ graphData }) => {
     const isMobile = useMobile();
+    const hasData = graphData?.labels?.length > 0 && graphData?.data.length > 0;
 
-    const data = {
+    const data = hasData ? {
         labels: graphData?.labels,
         datasets: [
             {
@@ -23,7 +24,18 @@ export const PieChart = ({ graphData }) => {
                 borderWidth: 6
             },
         ],
-    };
+    }
+        : {
+            labels: ['No Records'],
+            datasets: [
+                {
+                    label: 'No Records',
+                    data: [1],
+                    borderColor: "black",
+                    backgroundColor: ['black'],
+                },
+            ],
+        };
 
     const options = {
         responsive: true,
@@ -36,6 +48,11 @@ export const PieChart = ({ graphData }) => {
                 text: graphData?.title,
                 color: 'white',
             },
+            tooltip: {
+                callbacks: {
+                    label: (tooltipItem) => (hasData ? `${tooltipItem?.label}: ${tooltipItem?.raw}` : `No ${graphData?.title} Found`),
+                },
+            },
         },
     };
 
@@ -44,8 +61,8 @@ export const PieChart = ({ graphData }) => {
             <Box sx={{ height: "250px" }}>
                 <Doughnut data={data} options={options} />
             </Box>
-            <Box sx={{ width: isMobile ? "100%" : "80%" }} mt={3}>
-                {graphData?.labels.map((label, index) => (
+            <Box sx={{ width: isMobile ? "100%" : "80%", height: "100%" }} mt={3}>
+                {graphData?.labels?.length > 0 && graphData?.labels.map((label, index) => (
                     <Box key={index} sx={{ backgroundColor: "#1B1B1B", padding: "2px" }}>
                         <Grid container sx={{ backgroundColor: "#323232", margin: 0, padding: "8px", borderRadius: "8px" }}>
                             <Grid item md={3} lg={3} xs={3}>
@@ -68,6 +85,9 @@ export const PieChart = ({ graphData }) => {
                         </Grid>
                     </Box>
                 ))}
+                {graphData?.labels?.length === 0 && <Box sx={{ backgroundColor: "#323232", padding: "8px", borderRadius: "8px" }}>
+                    <Typography variant="body1" sx={{ fontSize: "11px", textAlign: "center" }}>{`No ${graphData?.title} Found`} </Typography>
+                </Box>}
             </Box>
         </Box>
     )

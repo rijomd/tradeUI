@@ -57,13 +57,16 @@ export const NormalTable = ({ tableHeader = [], tableData = [], page = 1, totalD
                                     if (headerItem?.type === "function") {
                                         value = headerItem?.renderComponent(data);
                                     }
+                                    if (headerItem?.type === "index") {
+                                        value = index + 1;
+                                    }
                                     return <StyledTableCell key={key} style={{ border: "none" }}>
                                         <>{value}</>
                                     </StyledTableCell>;
                                 })}
                         </StyledTableRow>
                     })}
-                    {tableData.length === 0 && <StyledTableRow><StyledTableCell sx={{ border: "none" }}>No Items Found</StyledTableCell></StyledTableRow>}
+                    {tableData.length === 0 && <StyledTableRow><StyledTableCell sx={{ border: "none", textAlign: "center" }} colSpan={tableHeader?.length}>No Items Found</StyledTableCell></StyledTableRow>}
                 </TableBody>
             </Table>
             {totalData > 10 && <Stack spacing={2} pt={2} pb={2} >
