@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
@@ -14,7 +14,7 @@ const detailsStyle = {
     alignItems: "center"
 };
 
-export const PaymentScheduler = ({ open = false, handleClose = () => { }, paymentData = {}, submitSchedule = () => { } }) => {
+const PaymentScheduler = ({ open = false, handleClose = () => { }, paymentData = {}, submitSchedule = () => { }, isLoading }) => {
     const totalFridays = getFridays(8);
     const xs = useMobile(true);
     const theme = useTheme();
@@ -74,8 +74,8 @@ export const PaymentScheduler = ({ open = false, handleClose = () => { }, paymen
                                 <Typography pb={1} sx={{ color: "#FFFFFFB2" }} variant='body' >Growwise Id</Typography>
                             </Box>
                             <Box sx={{ display: 'flex', flexDirection: "column", }}>
-                                <Typography pb={1} variant='body'>{paymentData?.name}</Typography>
-                                <Typography pb={1} variant='body'>{paymentData?.growWiseId}</Typography>
+                                <Typography pb={1} variant='body'>{paymentData?.user_name}</Typography>
+                                <Typography pb={1} variant='body'>{paymentData?.user_id}</Typography>
                             </Box>
                         </Box>
                     </Grid>
@@ -93,6 +93,7 @@ export const PaymentScheduler = ({ open = false, handleClose = () => { }, paymen
                         <FormButtonField
                             sx={{ textTransform: 'none', marginTop: "12px" }}
                             fullWidth
+                            isLoading={isLoading}
                             disabled={box === null}
                             onClick={() => { submitSchedule(box); }}
                         >
@@ -105,3 +106,5 @@ export const PaymentScheduler = ({ open = false, handleClose = () => { }, paymen
         </>
     )
 }
+
+export default memo(PaymentScheduler);

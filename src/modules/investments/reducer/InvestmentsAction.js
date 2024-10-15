@@ -5,19 +5,19 @@ import { investmentsUserDetailsUrl, investmentsUserUrl } from "../config/Constan
 import { useAlert } from "components/hooks/Hook";
 
 // this for admin side
-export const investmentsUserAction = createAsyncThunk(
-    "investment/investmentsUserAction",
-    async (id, thunkAPI) => {
-        try {
-            const response = await axios.get(investmentsUserUrl + id);
-            return response.data;
-        } catch (error) {
-            const errorMessage = error.response.data.message || "Something Wrong!";
-            useAlert(errorMessage, "error");
-            return thunkAPI.rejectWithValue(errorMessage);
-        }
-    }
-);
+// export const investmentsUserAction = createAsyncThunk(
+//     "investment/investmentsUserAction",
+//     async (id, thunkAPI) => {
+//         try {
+//             const response = await axios.get(investmentsUserUrl + id);
+//             return response.data;
+//         } catch (error) {
+//             const errorMessage = error.response.data.message || "Something Wrong!";
+//             useAlert(errorMessage, "error");
+//             return thunkAPI.rejectWithValue(errorMessage);
+//         }
+//     }
+// );
 
 export const investmentsUserDEtailsAction = createAsyncThunk(
     "investment/investmentsUserDEtailsAction",

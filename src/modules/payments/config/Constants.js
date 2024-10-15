@@ -1,7 +1,7 @@
 import { getMyAPiUrl } from "service/AuthMethods";
 
-export const paymentsUrl = getMyAPiUrl() + "/payment/payments";
-
+export const getPaymentsUrl = getMyAPiUrl() + "/payment/getpayment/";
+export const addPaymentsUrl = getMyAPiUrl() + "/payment/schedulePayment";
 
 export const errorMessage = "Something Wrong!";
 export const successMessage = "Login successfully!";

@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Grid } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -6,15 +7,46 @@ import { PageOutLine } from 'components/pageOutline/PageOutLine';
 import { useAlert, useMobile } from 'components/hooks/Hook';
 import { FormButtonField } from 'components/formElements/FormButtonField';
 import { NormalTable } from 'components/Table/Table';
+import { DateRangePicker } from 'components/formElements/DateRangePicker';
+import { getAuthUser } from 'service/AuthMethods';
 
 import PaymentIcon from 'assets/icons/Vector.svg';
-import { PaymentScheduler } from '../components/PaymentScheduler';
-import { DateRangePicker } from 'components/formElements/DateRangePicker';
+
+import { addPaymentsAction, getPaymentsAction } from '../reducer/PaymentsAction';
+import PaymentScheduler from '../components/PaymentScheduler';
 
 const Payments = () => {
-    const [isOenScheduler, setOpenScheduler] = useState(false);
     const xs = useMobile(true);
     const dateRef = useRef(null);
+    const dispatch = useDispatch();
+    const payments = useSelector((state) => state.payments);
+    const user = getAuthUser();
+    const payload = {
+        limit: 10, page: 1
+    }
+
+    const [isOenScheduler, setOpenScheduler] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        if (user?.user_id) {
+            dispatch(getPaymentsAction({ ...payload, id: user?.user_id }));
+        }
+    }, []);
+
+    useEffect(() => {
+        if (payments.status === "completed") {
+            setIsLoading(false);
+            const a = <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ borderRadius: "6px", padding: "8px", background: "#FFD5FA", color: "black", fontWeight: 700 }}> NEW</div>
+                <div style={{ paddingLeft: "8px" }}> {`Your request was successfully sent on ${12} and is currently PENDING. We will inform you one it has been approved.`}</div>
+            </div>
+            useAlert(a, "theme");
+        }
+        if (payments.status === "failed") {
+            setIsLoading(false);
+        }
+    }, [payments?.status])
 
 
     const tableHeader = [
@@ -41,36 +73,20 @@ const Payments = () => {
         }
     ];
 
-    const tableData = [
-        { slNo: "1", company: "company", cmp: "short code" },
-        { slNo: "2", company: "company", cmp: "short code" },
-        { slNo: "3", company: "company", cmp: "short code" },
-        { slNo: "4", company: "company", cmp: "short code" },
-        { slNo: "5", company: "company", cmp: "short code" },
-        { slNo: "6", company: "company", cmp: "short code" },
-        { slNo: "7", company: "company", cmp: "short code" },
-        { slNo: "8", company: "company", cmp: "short code" },
-        { slNo: "9", company: "company", cmp: "short code" },
-        { slNo: "10", company: "company", cmp: "short code" }
-    ];
-
-    const paymentData = {
-        name: "Midhun Nandhanan",
-        growWiseId: "GSVAGH1234Sw344",
-        profit: 24560
-    }
-
     const checkStatements = (startDate, endDate) => {
-        console.log(startDate, "date", endDate);
+        dispatch(getPaymentsAction({ ...payload, id: user?.user_id, fromDate: startDate, toDate: endDate }));
     }
 
     const submitSchedule = (item) => {
+        setIsLoading(true);
+        dispatch(addPaymentsAction({
+            user_id: user?.user_id,
+            GrowwiseID: user?.user_id,
+            scheduledDate: item?.value,
+            name: user.user_name,
+            status: "Created"
+        }));
         setOpenScheduler(false);
-        const a = <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ borderRadius: "6px", padding: "8px", background: "#FFD5FA", color: "black", fontWeight: 700 }}> NEW</div>
-            <div style={{ paddingLeft: "8px" }}> {`Your request was successfully sent on ${item.value} and is currently PENDING. We will inform you one it has been approved.`}</div>
-        </div>
-        useAlert(a, "theme");
     }
 
     const search = () => {
@@ -113,14 +129,15 @@ const Payments = () => {
                 </Grid>
 
                 <Grid item md={12} lg={12} xl={12} xs={12} sm={12}>
-                    <NormalTable tableHeader={tableHeader} tableData={tableData} />
+                    <NormalTable tableHeader={tableHeader} tableData={payments?.paymentList} />
                 </Grid>
 
                 {isOenScheduler && <PaymentScheduler
-                    paymentData={paymentData}
+                    paymentData={user}
                     open={isOenScheduler}
                     handleClose={() => { setOpenScheduler(prev => !prev); }}
                     submitSchedule={submitSchedule}
+                    isLoading={isLoading}
                 />}
 
             </Grid>

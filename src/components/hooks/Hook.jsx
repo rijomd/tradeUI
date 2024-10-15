@@ -57,7 +57,7 @@ export const getFridays = (count) => {
 };
 
 const colors = [
-  { label: "PENDING", value: "#FE9705" },
+  { label: "REQUESTED", value: "#FE9705" },
   { label: "REJECTED", value: "#D11313" },
   { label: "APPROVED", value: "green" },
 ];
@@ -77,4 +77,9 @@ export const matchItemOfTwoArray = (firstMatchingItem, secondMatchingItem, first
   return firstArray.filter(firstItem =>
     secondArray.some(secondItem => secondItem?.[secondMatchingItem] === firstItem?.[firstMatchingItem])
   );
+}
+
+export const urlParams = (paramsObject) => {
+  const urlParams = new URLSearchParams(paramsObject)?.toString();
+  return urlParams;
 }

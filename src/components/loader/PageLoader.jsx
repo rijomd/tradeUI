@@ -5,7 +5,7 @@ import { Typography, Box } from '@mui/material';
 function CircularProgressWithLabel(props) {
     return (
         <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-            <CircularProgress size={'8rem'} color='secondary' variant="determinate" {...props} />
+            <CircularProgress size={'3rem'} color='secondary' variant="determinate" {...props} />
             <Box
                 sx={{
                     top: 0,
@@ -21,7 +21,7 @@ function CircularProgressWithLabel(props) {
                 <Typography
                     variant="caption"
                     component="div"
-                    color="text.secondary"
+                    color="secondary"
                 >{`${Math.round(props.value)}%`}</Typography>
             </Box>
         </Box>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { investmentsUserAction, investmentsUserDEtailsAction } from "./InvestmentsAction";
+import {  investmentsUserDEtailsAction } from "./InvestmentsAction";
 import { errorMessage, successMessage } from "../config/Constants";
 
 const initialInvestmentGraphData = [
@@ -64,18 +64,6 @@ export const investmentSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    builder.addCase(investmentsUserAction.pending, (state) => {
-      state.status = "loading";
-    });
-    builder.addCase(investmentsUserAction.fulfilled, (state, action) => {
-      state.status = "success";
-      state.error = successMessage || action.payload?.message;
-    });
-    builder.addCase(investmentsUserAction.rejected, (state, action) => {
-      state.status = "failed";
-      state.error = action.payload || errorMessage;
-    });
-
     builder.addCase(investmentsUserDEtailsAction.fulfilled, (state, action) => {
       state.status = "success";
       state.investmentList = action.payload?.investmentist;
