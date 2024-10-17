@@ -53,18 +53,18 @@ export const DateRangePicker = forwardRef(({ handleSubmit = () => { } }, ref) =>
                         renderInput={(params) => <TextField  {...params} size="small"
                             sx={{
                                 '& .MuiInputBase-root': {
-                                    padding: '6px 10px', // Reducing padding to shrink the input height
+                                    padding: '6px 10px'
                                 },
                                 '& .MuiSvgIcon-root': {
-                                    fontSize: '1.2rem', // Shrinking the icon size
+                                    fontSize: '1.2rem'
                                 },
                                 '& .MuiInputLabel-root': {
-                                    fontSize: '0.875rem', // Small font for label
+                                    fontSize: '0.875rem'
                                 },
                             }}
                         />}
                     />
-                    <button ref={buttonRef} style={{ display: "none" }} onClick={() => { handleSubmit(dayjs(startDate).format("DD/MM/YYYY"), dayjs(endDate).format("DD/MM/YYYY")); }} >Ok</button>
+                    <button ref={buttonRef} style={{ display: "none" }} onClick={() => { handleSubmit(dayjs(startDate).format("YYYY/MM/DD"), dayjs(endDate).format("YYYY/MM/DD")); }} >Ok</button>
                 </LocalizationProvider>
             </Box>
         </>
