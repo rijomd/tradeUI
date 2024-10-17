@@ -15,6 +15,7 @@ import { logOutAction } from 'modules/auth/reducer/AuthSlice';
 
 import LogoutIcon from 'assets/icons/logout.svg';
 import { getAuthSideBars } from 'service/AuthMethods';
+import { LogoutPopUp } from './LogoutPopUp';
 
 export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window }) => {
   const theme = useTheme();
@@ -23,6 +24,7 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
   const dispatch = useDispatch();
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
   const authSlice = useSelector((state) => state.auth);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const logOut = () => {
     localStorage.clear();
@@ -70,14 +72,14 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
 
   const footerSection = () => {
     return (<Box className="footer-section">
-      <Box className="logout-section" sx={{ background: "#FFFFFF1A" }} onClick={logOut}>
+      <Box className="logout-section" sx={{ background: "#FFFFFF1A" }} onClick={() => setIsOpen(true)}>
         <img src={LogoutIcon} />
         <Typography variant='body1' pl={.5}>Log Out</Typography>
       </Box>
       <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
         <Chip label={REACT_APP_VERSION} disabled color="secondary" size="small" sx={{ cursor: 'pointer' }} />
       </Stack>
-    </Box>);
+    </Box >);
   }
 
   const drawer = (
@@ -135,6 +137,8 @@ export const MemorizedSidebar = ({ drawerOpen, drawerToggle = () => { }, window 
       >
         {drawer}
       </Drawer>
+
+      <LogoutPopUp isOpen={isOpen} handleClose={() => { setIsOpen(close) }} handleSubmit={() => logOut()} />
     </Box>
   );
 };

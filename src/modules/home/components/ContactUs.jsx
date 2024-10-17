@@ -7,6 +7,7 @@ import logo from "assets/images/aboutLogo.png";
 import contactImage from "assets/images/contactusFull.jpeg";
 import { contactUSAction } from '../reducer/HomeAction';
 import { ContactUsForm } from '../forms/ContactUsForm';
+import { ReCall } from 'components/modals/ReCall';
 
 export const ContactUs = ({ }) => {
     const theme = useTheme();
@@ -14,13 +15,23 @@ export const ContactUs = ({ }) => {
     const home = useSelector((state) => state.home);
     const init = { CustomerName: "", email: "", message: "" };
     const [formData, setFormData] = useState(init);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         if (home?.status === "success") {
-            setFormData({ ...init })
+            setFormData({ ...init });
+            setIsOpen(true);
         }
     }, [home?.status]);
 
+    useEffect(() => {
+        const timeoutId = isOpen === true && setTimeout(() => {
+            setIsOpen(false);
+        }, 3000);
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, [isOpen])
 
     const handleSubmit = async (data) => {
         dispatch(contactUSAction(data));
@@ -52,6 +63,8 @@ export const ContactUs = ({ }) => {
                     </Box>
                 </Grid>
             </Grid>
+
+            <ReCall isOpen={isOpen} handleClose={() => { }} />
 
         </Container>
     )

@@ -38,6 +38,10 @@
   padding-top: 100px;
 }
 
+.recall-content{
+  max-width: 85%;
+  max-height: 90%;
+}
 
 .welcome-button {
   background: transparent;

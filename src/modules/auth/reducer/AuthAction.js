@@ -12,7 +12,7 @@ import { MenuItems } from "routes/SideMenuItems";
 
 export const loginAction = createAsyncThunk(
   "authentication/loginAction",
-  async ({ data, navigate }, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
       const response = await axios.post(loginUrl, data);
       const token = response.data.data.token;
@@ -25,11 +25,6 @@ export const loginAction = createAsyncThunk(
       localStorage.setItem(ACCESS_ROUTES, JSON.stringify(newRouters));
       localStorage.setItem(ACCESS_SIDEBAR, JSON.stringify(newSideBarMenus));
 
-      useAlert(response.data?.message || successMessage, "success");
-      setTimeout(() => {
-        navigate('/dashBoard');
-        window.location?.reload();
-      }, 1000);
       return response.data.data;
     } catch (error) {
       console.error(error);

@@ -21,7 +21,7 @@ export const Notification = ({ }) => {
         },
         {
             message: "Your Request has been approved",
-            status: "Pending",
+            status: "Requested",
             date: "02/10/2024",
             name: "Nived "
         },
@@ -39,7 +39,7 @@ export const Notification = ({ }) => {
         },
         {
             message: "Your Request has been approved",
-            status: "Pending",
+            status: "Requested",
             date: "02/10/2024"
         },
         {
